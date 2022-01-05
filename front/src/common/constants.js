@@ -6,15 +6,15 @@ export default {
     },
     {
       name: 'About',
-      url:  '/'
+      url:  '/about'
     },
     {
       name: 'SignUp',
-      url:  '/'
+      url:  '/signup'
     },
     {
       name: 'SignIn',
-      url:  '/'
+      url:  '/signin'
     },
   ]
 }
