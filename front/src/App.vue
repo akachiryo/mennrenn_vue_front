@@ -1,6 +1,9 @@
 <template>
-  <v-app>
+  <v-app :style="{ background: $vuetify.theme.themes.light.background }">
     <Header />
+      <v-main>
+        <router-view />
+      </v-main>
     <Footer />
   </v-app>
 </template>
@@ -17,4 +20,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  .v-application--wrap {
+  min-height: 128px;
+}
+</style>
 

@@ -6,5 +6,12 @@ module.exports = {
         data: '@import "./src/styles/common/common.scss";'
       }
     }
+  },
+  configureWebpack: {
+    devServer: {
+      watchOptions: {
+        poll: true
+      }
+    }
   }
 };

@@ -1,14 +1,21 @@
 import Vue from "vue";
 import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
-import Vuex from "vuex";
+import store from '@/store'
 import router from "./router";
 
 Vue.config.productionTip = false;
-Vue.use(Vuex);
 
 new Vue({
   vuetify,
   router,
+  store,
+  created() {
+      const userString = localStorage.getItem('currentUser')
+      if (userString) {
+          const userData = JSON.parse(userString)
+          this.$store.commit('auth/SET_CURRENT_USER', userData)
+      }
+    },
   render: (h) => h(App),
 }).$mount("#app");
