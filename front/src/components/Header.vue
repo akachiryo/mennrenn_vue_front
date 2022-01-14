@@ -28,9 +28,16 @@
           v-for="(loginList, index) in loginLists"
           :key="index"
           :to="`${loginList.url}`"
-          @click="`${loginList.action}`"
           >
-            {{ loginList.name }}
+          <div 
+          v-if="loginList.name === 'ログアウト'"  
+          @click="logout"
+          >
+              {{ loginList.name }}
+          </div>
+          <div v-else>
+              {{ loginList.name }}
+          </div>
           </v-tab>
         </v-tabs>
         <!-- ログアウト中 -->
@@ -38,11 +45,11 @@
         v-else
         >
           <v-tab
-          v-for="(loginList, index) in loginLists"
+          v-for="(logoutList, index) in logoutLists"
           :key="index"
-          :to="`${loginList.url}`"
+          :to="`${logoutList.url}`"
           >
-            {{ loginList.name }}
+            {{ logoutList.name }}
           </v-tab>
         </v-tabs>
       </v-app-bar>
@@ -56,16 +63,41 @@
           nav
           dense
         >
-          <v-list-item-group>
+        <!-- ログイン中 -->
+          <v-list-item-group
+           v-if="$store.getters['auth/currentUser']"
+          >
             <v-list-item
             v-for="(loginList, index) in loginLists"
             :key="index"
             :to="`${loginList.url}`"
             >     
-              <v-list-item-title>{{ loginList.name }}</v-list-item-title>
+              <v-list-item-title
+              v-if="loginList.name ===`ログアウト`"
+              @click="logout"
+              >
+                {{ loginList.name }}
+              </v-list-item-title>
+              <v-list-item-title
+              v-else
+              >
+                {{ loginList.name }}
+              </v-list-item-title>
             </v-list-item>
           </v-list-item-group>
-          
+          <!-- ログアウト中 -->
+          <v-list-item-group
+           v-else
+          >
+            <v-list-item
+            v-for="(logoutList, index) in logoutLists"
+            :key="index"
+            :to="`${logoutList.url}`"
+            > 
+              <v-list-item-title>{{ logoutList.name }}</v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+
         </v-list>
       </v-navigation-drawer>
   </v-app>
