@@ -28,7 +28,7 @@ export default {
     },
     {
       name: '部屋作成',
-      url:  '/signup'
+      url:  '/rooms/new'
     },
     {
       name: '通知一覧',

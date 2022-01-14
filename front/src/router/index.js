@@ -1,9 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../components/Home.vue";
-import About from "../components/About.vue";
-import Signup from "../components/Signup.vue";
-import Signin from "../components/Signin.vue";
+import Home from "../views/Home.vue";
+import About from "../views/About.vue";
+import Signup from "../views/Signup.vue";
+import Signin from "../views/Signin.vue";
+import CreateRoom from "../views/CreateRoom.vue";
 
 Vue.use(VueRouter);
 
@@ -14,6 +15,7 @@ const router = new VueRouter({
       { path: "/about", component: About, name: "About"},
       { path: "/signup", component: Signup, name: "Signup"},
       { path: "/signin", component: Signin, name: "Signin"},
+      { path: "rooms/new", component: CreateRoom, name: "CreateRoom"}
   ]
 });
 
