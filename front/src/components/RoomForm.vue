@@ -7,13 +7,13 @@
                     lazy-validation
             >
                 <v-text-field
-                        v-model="title"
+                        v-model="roomTitle"
                         :rules="titleRules"
                         label="Title"
                 ></v-text-field>
 
                 <v-textarea
-                        v-model="content"
+                        v-model="roomContent"
                         :rules="contentRules"
                         label="Content"
                 ></v-textarea>
@@ -24,3 +24,32 @@
         </v-card-actions>
     </v-card>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    valid: true,
+    roomTitle: "",
+    roomContent: ""
+  }),
+  computed: {
+    titleRules() {
+      return [
+        v => !!v || "タイトルが必要です"
+      ]
+    },
+    contentRules() {
+      return [
+        v => !!v || "詳細が必要です",
+        v => ( v & v >= 140 ) || "140文字以内"
+      ]}
+  },
+  methods: {
+    createRoom() {
+    this.$emit(`created`, this.roomTitle, this.roomContent)
+    this.roomTitle = ""
+    this.roomContent = ""
+    }
+  }
+  }
+</script>

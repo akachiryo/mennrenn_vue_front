@@ -8,7 +8,7 @@
                     cols="12"
                     sm="8"
                     md="6">
-              <RoomForm />>
+              <RoomForm @created="createRoom"></RoomForm>
             </v-col>
         </v-row>
     </v-container>
@@ -16,27 +16,22 @@
 
 <script>
 import axios from 'axios'
-import RoomForm from "../"
+import RoomForm from "../components/RoomForm.vue"
 
 export default {
-  data: () => ({
-    valid: true,
-    title: "",
-    content: ""
-  }),
-  computed: {
-    titlrRules() {
-      return [
-        v => !!v || "タイトルが必要です",
-      ]
-    },
-    contentRules() {
-      return [
-        v => !!v || "詳細が必要です",
-        v => ( v & v >= 140 ) || "140文字以内"
-      ]
-    },
-
+  components: {
+    RoomForm
+  },
+  methods: {
+    async createRoom(roomTitle, roomContent) {
+      const roomParams = {
+        room: {
+          title: roomTitle,
+          content: roomContent
+        }
+      }
+      await axios.post('http://localhost:3000/api/rooms', roomParams)
+    }
   }
 }
 </script>
