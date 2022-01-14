@@ -1,19 +1,19 @@
 export default {
   logoutLists: [
     {
-      name: 'Home',
+      name: 'ホーム',
       url:  '/'
     },
     {
-      name: 'About',
+      name: 'コンテンツ',
       url:  '/about'
     },
     {
-      name: 'SignUp',
+      name: '新規登録',
       url:  '/signup'
     },
     {
-      name: 'SignIn',
+      name: 'ログイン',
       url:  '/signin'
     }
   ],
@@ -36,8 +36,7 @@ export default {
     },
     {
       name: "ログアウト",
-      url: "/",
-      action: "this.logout"
+      url: "/"
     }
   ]
 }
