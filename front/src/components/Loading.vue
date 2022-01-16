@@ -32,4 +32,5 @@ export default {
 .loading-spacer {
   height: 30%;
 }
+
 </style>
