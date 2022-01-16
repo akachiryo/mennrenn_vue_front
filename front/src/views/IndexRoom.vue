@@ -21,32 +21,7 @@ import RoomLists from "../components/RoomLists.vue"
 export default {
   data() {
     return {
-      rooms: [
-       {
-        "id": 2,
-        "title": "あああ",
-        "content": "あああ",
-        "created_at": "2022-01-16T01:16:24.402Z",
-        "updated_at": "2022-01-16T01:16:24.402Z",
-        "user": {
-            "id": 1,
-            "name": "aaa",
-            "email": "a@a.com"
-        }
-    },
-    {
-        "id": 1,
-        "title": "あああああ",
-        "content": "あああああ",
-        "created_at": "2022-01-14T18:31:24.857Z",
-        "updated_at": "2022-01-14T18:31:24.857Z",
-        "user": {
-            "id": 1,
-            "name": "aaa",
-            "email": "a@a.com"
-        }
-    }
-      ]
+      rooms: []
     }
   },
   components: {
@@ -54,13 +29,22 @@ export default {
   },
   computed: {
     isExistRooms() {
-      return this.rooms.length > 1
+      return this.rooms.length > 0
     }
   },
    mounted() {
-      axios.get("http://localhost:3000/api/rooms")
-      .then(response => {this.rooms = response.data.rooms})
-      .catch(error => console.log(error))
+     this.setRooms()
+     },
+   methods: {
+     setRooms() {
+       this.$emit('loadingTrue')
+       axios.get("http://localhost:3000/api/rooms")
+       .then(response => {
+         this.rooms = response.data;
+         this.$emit('loadingFalse')
+       })
+       .catch(error => console.log(error))
+     }
    }
 }
 </script>

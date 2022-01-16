@@ -31,6 +31,7 @@ export default {
         }
       }
       await axios.post('http://localhost:3000/api/rooms', roomParams)
+      this.$router.push({path: `/rooms`})
     }
   }
 }
