@@ -24,7 +24,7 @@ export default {
     },
     {
       name: '部屋一覧',
-      url:  '/about'
+      url:  '/rooms'
     },
     {
       name: '部屋作成',

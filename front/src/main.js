@@ -1,10 +1,14 @@
 import Vue from "vue";
 import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
-import store from '@/store'
+import store from './store'
 import router from "./router";
+import dayjs from "dayjs";
 
 Vue.config.productionTip = false;
+
+dayjs.locale("ja");
+Vue.prototype.$dayjs = dayjs;
 
 new Vue({
   vuetify,
