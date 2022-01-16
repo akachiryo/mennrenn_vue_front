@@ -2,41 +2,42 @@ export default {
   logoutLists: [
     {
       name: 'ホーム',
-      url:  '/'
+      url: '/',
     },
     {
       name: 'コンテンツ',
-      url:  '/about'
+      url: '/about',
     },
     {
       name: '新規登録',
-      url:  '/signup'
+      url: '/signup',
     },
     {
       name: 'ログイン',
-      url:  '/signin'
-    }
+      url: '/signin',
+    },
   ],
   loginLists: [
     {
       name: 'マイページ',
-      url:  '/'
+      url: '/',
     },
     {
       name: '部屋一覧',
-      url:  '/rooms'
+      url: '/rooms',
     },
     {
       name: '部屋作成',
-      url:  '/rooms/new'
+      url: '/rooms/new',
     },
+    // {
+    //   name: '通知一覧',
+    //   url: '/signin',
+    // },
     {
-      name: '通知一覧',
-      url:  '/signin'
+      name: 'ログアウト',
+      url: '/',
     },
-    {
-      name: "ログアウト",
-      url: "/"
-    }
-  ]
-}
+
+  ],
+};
