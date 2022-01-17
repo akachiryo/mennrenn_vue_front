@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       rooms: [],
-      room: {}
+      room: {},
     };
   },
   components: {

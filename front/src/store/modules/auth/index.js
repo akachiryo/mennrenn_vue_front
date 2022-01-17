@@ -4,7 +4,9 @@ const state = {
 };
 
 const getters = {
-  currentUser: (state) => state.currentUser,
+  currentUser(state) {
+    return state.currentUser;
+  },
 };
 
 const mutations = {
@@ -28,9 +30,18 @@ const actions = {
     );
     commit('SET_CURRENT_USER', res.data.user);
   },
-
   logout({ commit }) {
     commit('CLEAR_CURRENT_USER');
+  },
+  async updateProfile({ commit, state }, userParams) {
+    const res = await axios.patch(
+      `http://localhost:3000/api/users`,
+      userParams
+    );
+    commit('SET_CURRENT_USER', {
+      ...res.data.user,
+      ...{ token: state.currentUser.token },
+    });
   },
 };
 

@@ -19,10 +19,7 @@
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-app-bar-title>MennRenn</v-app-bar-title>
       <!-- ログイン中 -->
-      <v-tabs
-      v-if="$store.getters['auth/currentUser']"
-      right
-      >
+      <v-tabs v-if="logging" right>
         <v-tab
           v-for="(loginList, index) in loginLists"
           :key="index"
@@ -51,7 +48,7 @@
     <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
         <!-- ログイン中 -->
-        <v-list-item-group v-if="logining">
+        <v-list-item-group v-if="logging">
           <v-list-item
             v-for="(loginList, index) in loginLists"
             :key="index"
@@ -97,8 +94,8 @@ export default {
   },
   computed: {
     logging() {
-      return this.$store.getters['auth/currentUser']
-    }
+      return this.$store.getters['auth/currentUser'];
+    },
   },
   methods: {
     logout() {

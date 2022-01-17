@@ -1,13 +1,13 @@
 <template>
   <v-card>
     <v-card-title class="justify-center">
-        <v-avatar size="120">
-          <v-img
-            src="https://cdn.vuetifyjs.com/images/john.jpg"
-            aspect-ratio="1"
-            class="grey lighten-2"
-          ></v-img>
-        </v-avatar>
+      <v-avatar size="120">
+        <v-img
+          src="https://cdn.vuetifyjs.com/images/john.jpg"
+          aspect-ratio="1"
+          class="grey lighten-2"
+        ></v-img>
+      </v-avatar>
       <!-- <v-spacer></v-spacer> -->
       <!-- <v-btn
       class="ma-2"
@@ -24,7 +24,7 @@
           <v-icon>mdi-account</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>{{ user.name}}</v-list-item-title>
+          <v-list-item-title>{{ user.name }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-divider inset></v-divider>
@@ -33,7 +33,7 @@
           <v-icon>mdi-account-details</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>{{ user.email}}</v-list-item-title>
+          <v-list-item-title>{{ user.email }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -44,8 +44,8 @@
 export default {
   props: {
     user: {
-      type: Object
-    }
-  }
-}
+      type: Object,
+    },
+  },
+};
 </script>
