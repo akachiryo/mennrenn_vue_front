@@ -1,14 +1,6 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col>
-        <div>
-          <room-lists v-if="isExistRooms" :rooms="rooms"></room-lists>
-
-          <div class="text-center" v-else>一件もありません</div>
-        </div>
-      </v-col>
-    </v-row>
+    <RoomLists :rooms="rooms" />
   </v-container>
 </template>
 
@@ -20,15 +12,11 @@ export default {
   data() {
     return {
       rooms: [],
+      room: {}
     };
   },
   components: {
     RoomLists,
-  },
-  computed: {
-    isExistRooms() {
-      return this.rooms.length > 0;
-    },
   },
   mounted() {
     this.setRooms();

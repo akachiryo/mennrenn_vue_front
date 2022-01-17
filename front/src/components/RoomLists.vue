@@ -1,23 +1,33 @@
 <template>
-  <v-card>
-    <v-list three-line>
-      <room-item v-for="room in rooms" :key="room.id" :room="room"></room-item>
-    </v-list>
-  </v-card>
+  <v-row>
+    <v-col
+      v-for="room in rooms"
+      :key="room.id"
+      cols="4"
+    >
+      <room-item v-if="isExistRooms" :room="room"></room-item>
+      <div class="text-center" v-else>一件もありません</div>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
-import RoomItem from './RoomItem.vue';
-
+import RoomItem from './RoomItem.vue'
 export default {
   props: {
     rooms: {
-      type: Array,
-      default: () => [],
+      type: Array
     },
+    room: {}
   },
   components: {
-    RoomItem,
+    RoomItem
   },
-};
+   computed: {
+    isExistRooms() {
+      return this.rooms.length > 0;
+    },
+   }
+
+}
 </script>

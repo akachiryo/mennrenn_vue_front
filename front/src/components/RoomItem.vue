@@ -1,25 +1,32 @@
 <template>
-  <div>
-    <v-list-item @click="$router.push(`/rooms/${room.id}`)">
-      <v-list-item-avatar>
-        <v-img src="https://picsum.photos/80/80/?random"></v-img>
-      </v-list-item-avatar>
-
-      <v-list-item-content>
-        <v-list-item-title v-html="room.title"></v-list-item-title>
-        <v-list-item-subtitle
-          style="white-space: pre-line"
-          v-html="room.content"
-        ></v-list-item-subtitle>
-      </v-list-item-content>
-      <v-list-item-action>
-        <v-list-item-action-text
-          v-text="$dayjs(room.created_at).format('YYYY-MM-DD HH:mm:ss')"
-        ></v-list-item-action-text>
-      </v-list-item-action>
-    </v-list-item>
-    <v-divider :inset="true"></v-divider>
-  </div>
+<v-card 
+    max-width="400"
+     @click="$router.push(`/rooms/${room.id}`)"
+     class="ma-10"
+>
+  <v-card-title>
+    <span class="text-h5">{{ room.title}}</span>
+  </v-card-title>
+  <v-card-text class="font-weight-bold">
+      {{ room.content }}
+  </v-card-text>
+  <v-card-actions>
+      <v-list-item class="grow">
+        <v-list-item-avatar color="grey darken-3">
+          <v-img
+            class="elevation-6"
+            src="https://picsum.photos/80/80/?random"
+          ></v-img>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title>{{ room.user.name }}</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-action 
+        v-text="$dayjs(room.created_at).format('YYYY-MM-DD HH:mm:ss')"
+        ></v-list-item-action>
+      </v-list-item>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>

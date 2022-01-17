@@ -5,9 +5,10 @@
         <UserItem :user="room.user" />
       </v-col>
       <v-col cols="8">
-        <DetailRoomItem :room="room" />
+        <DetailRoomItem :room="room" @openEditRoom="openEditRoom" />
       </v-col>
     </v-row>
+    <room-edit-modal ref="dialog" :room="room" @update="updateRoom"></room-edit-modal>
   </v-container>
 </template>
 
@@ -15,6 +16,7 @@
 import axios from 'axios'
 import UserItem from '../components/UserItem'
 import DetailRoomItem from '../components/DetailRoomItem'
+import RoomEditModal from '../components/RoomEditModal'
 
 export default {
   data() {
@@ -24,7 +26,8 @@ export default {
   },
   components: {
     UserItem,
-    DetailRoomItem
+    DetailRoomItem,
+    RoomEditModal
   },
   created() {
     this.fetchRoom()
@@ -40,6 +43,18 @@ export default {
       .then((response) => {
         this.room = response.data;
       })
+    },
+    async updateRoom(roomTitle, roomContent) {
+        await axios.patch(`http://localhost:3000//api/rooms/${this.roomId}`, {
+           room: { 
+             title: roomTitle,
+             content: roomContent }})
+        this.$refs.dialog.close()
+        this.room.title = roomTitle
+        this.room.content = roomContent
+    },
+    openEditRoom() {
+      this.$refs.dialog.open()
     }
   }
 }

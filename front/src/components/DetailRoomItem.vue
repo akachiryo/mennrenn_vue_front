@@ -15,16 +15,50 @@
         <v-icon>mdi-door-open</v-icon>
         部屋に入室する
       </v-btn>
+      <v-spacer></v-spacer>
+      <div>
+        <!-- v-if="isMine" -->
+        <v-btn 
+        class="mx-2"
+        fab
+        large
+        dark
+        color="green lighten-1"
+        @click="openEditRoom"
+        >
+          <v-icon dark>mdi-pen</v-icon>
+        </v-btn>
+        <v-btn
+        class="mx-2"
+        fab
+        large
+        dark
+        color="error lighten-1"
+        >
+          <v-icon dark>mdi-delete</v-icon>
+        </v-btn>
+      </div>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
+
 export default {
   props: {
     room: {
       type: Object
+    },
+  },
+  computed: {
+    isMine() {
+      return this.room.user.id == this.$store.getters.currentUser
     }
+  },
+methods: {
+  openEditRoom() {
+    this.$emit("openEditRoom")
   }
+}
 }
 </script>
