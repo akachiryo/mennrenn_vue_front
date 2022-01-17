@@ -5,7 +5,7 @@
         <UserItem :user="room.user" />
       </v-col>
       <v-col cols="8">
-        <DetailRoomItem :room="room" @openEditRoom="openEditRoom" />
+        <DetailRoomItem :room="room" @openEditRoom="openEditRoom" @deleteRoom="deleteRoom" />
       </v-col>
     </v-row>
     <room-edit-modal ref="dialog" :room="room" @update="updateRoom"></room-edit-modal>
@@ -52,6 +52,12 @@ export default {
         this.$refs.dialog.close()
         this.room.title = roomTitle
         this.room.content = roomContent
+    },
+    async deleteRoom() {
+      if (confirm("削除しますか？")) {
+        await axios.delete(`http://localhost:3000/api/rooms/${this.roomId}`)
+        this.$router.push('/rooms')
+      }
     },
     openEditRoom() {
       this.$refs.dialog.open()

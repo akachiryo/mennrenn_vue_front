@@ -34,6 +34,7 @@
         large
         dark
         color="error lighten-1"
+        @click="deleteRoom"
         >
           <v-icon dark>mdi-delete</v-icon>
         </v-btn>
@@ -58,6 +59,9 @@ export default {
 methods: {
   openEditRoom() {
     this.$emit("openEditRoom")
+  },
+  deleteRoom() {
+    this.$emit("deleteRoom")
   }
 }
 }
