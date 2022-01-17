@@ -3,7 +3,8 @@
     <v-col
       v-for="room in rooms"
       :key="room.id"
-      cols="4"
+      cols="6"
+      md="4"
     >
       <room-item v-if="isExistRooms" :room="room"></room-item>
       <div class="text-center" v-else>一件もありません</div>

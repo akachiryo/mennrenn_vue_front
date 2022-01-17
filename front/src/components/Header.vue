@@ -51,7 +51,7 @@
     <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
         <!-- ログイン中 -->
-        <v-list-item-group v-if="$store.getters['auth/currentUser']">
+        <v-list-item-group v-if="logining">
           <v-list-item
             v-for="(loginList, index) in loginLists"
             :key="index"
@@ -94,6 +94,11 @@ export default {
       loginLists: constants.loginLists,
       logoutLists: constants.logoutLists,
     };
+  },
+  computed: {
+    logging() {
+      return this.$store.getters['auth/currentUser']
+    }
   },
   methods: {
     logout() {
