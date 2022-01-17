@@ -16,8 +16,9 @@
         部屋に入室する
       </v-btn>
       <v-spacer></v-spacer>
-      <div>
-        <!-- v-if="isMine" -->
+      <div
+        v-if="isMine"
+      >
         <v-btn 
         class="mx-2"
         fab
@@ -53,7 +54,7 @@ export default {
   },
   computed: {
     isMine() {
-      return this.room.user.id == this.$store.getters.currentUser
+      return this.room.user.id == this.$store.getters['auth/currentUser']
     }
   },
 methods: {
@@ -66,3 +67,4 @@ methods: {
 }
 }
 </script>
+

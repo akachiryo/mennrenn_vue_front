@@ -2,7 +2,6 @@
 <v-card 
     max-width="400"
      @click="$router.push(`/rooms/${room.id}`)"
-     class="ma-10"
 >
   <v-card-title>
     <span class="text-h5">{{ room.title}}</span>
