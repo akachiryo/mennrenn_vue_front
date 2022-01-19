@@ -1,0 +1,67 @@
+<template>
+    <v-dialog v-model="show" persistent max-width="600px">
+        <avatar-upload field="img"
+            @crop-success="cropSuccess"
+            @crop-upload-success="cropUploadSuccess"
+            @crop-upload-fail="cropUploadFail"
+            v-model="show"
+            :width="300"
+            :height="300"
+            langType="ja"
+            img-format="png"
+        ></avatar-upload>
+    </v-dialog>
+
+</template>
+
+<script>
+	import AvatarUpload from 'vue-image-crop-upload/upload-2.vue';
+
+	export default {
+		data() {
+            return {
+                show: false,
+            }
+		},
+		components: {
+			 AvatarUpload
+		},
+		methods: {
+			toggleShow() {
+				this.show = !this.show;
+			},
+            /**
+			 * crop success
+			 *
+			 * [param] imgDataUrl
+			 * [param] field
+			 */
+			cropSuccess(imgDataUrl){
+				console.log('-------- crop success --------');
+				this.imgDataUrl = imgDataUrl;
+			},
+			/**
+			 * upload success
+			 *
+			 * [param] jsonData  server api return data, already json encode
+			 * [param] field
+			 */
+			cropUploadSuccess(jsonData, field){
+				console.log('-------- upload success --------');
+				console.log(jsonData);
+				console.log('field: ' + field);
+			},
+			/**
+			 * upload fail
+			 *
+			 * [param] status    server api return error status, like 500
+			 * [param] field
+			 */
+			cropUploadFail(status, field){
+				console.log('-------- upload fail --------');
+				console.log(status);
+				console.log('field: ' + field);
+			}
+		}
+	}
+</script>

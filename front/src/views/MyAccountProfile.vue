@@ -41,7 +41,7 @@
 export default {
   data() {
     return {
-      dialog: true,
+      // dialog: true,
       user: null,
       // _user: null
     };

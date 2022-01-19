@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     isMine() {
-      return this.room.user.id == this.$store.getters['auth/currentUser'];
+      return this.room.user.id == this.$store.getters['auth/currentUser'].id
     },
   },
   methods: {
