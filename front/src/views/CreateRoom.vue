@@ -23,7 +23,7 @@ export default {
           title: roomTitle,
           content: roomContent,
         },
-        })
+      });
       this.$router.push({ path: `/rooms` });
     },
   },

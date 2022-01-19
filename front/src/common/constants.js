@@ -20,8 +20,7 @@ export default {
   loginLists: [
     {
       name: 'マイページ',
-      // url: "/users/${$store.getters['auth/currentUser'].id}/account/profile",
-      url: "/users/6",
+      url: "/users/${$store.getters['auth/currentUser'].id}"
     },
     {
       name: '部屋一覧',

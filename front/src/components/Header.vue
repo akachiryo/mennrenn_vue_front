@@ -23,7 +23,7 @@
         <v-tab
           v-for="(loginList, index) in loginLists"
           :key="index"
-          :to="`${loginList.url}`"
+          :to="`/users/${$store.getters['auth/currentUser'].id}`"
         >
           <div v-if="loginList.name === 'ログアウト'" @click="logout">
             {{ loginList.name }}
