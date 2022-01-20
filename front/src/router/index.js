@@ -23,9 +23,9 @@ const router = new VueRouter({
     { path: '/rooms', component: IndexRoom, name: 'IndexRoom' },
     { path: '/rooms/:id', component: DetailRoom, name: 'DetailRoom' },
     {
-      path: '/users/:id',
+      path: '/user',
       component: Profile,
-      name: 'user-profile',
+      name: 'Profile',
       // children: [
       //   {
       //     path: '/account/profile',
