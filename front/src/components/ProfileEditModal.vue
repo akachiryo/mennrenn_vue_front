@@ -52,14 +52,14 @@ export default {
     close() {
       this.dialog = false;
     },
-    async updateProfile() {
+    updateProfile() {
       const userParams = {
         user: {
           name: this.user.name,
           introduction: this.user.introduction,
         },
       };
-      await this.$store.dispatch('auth/updateProfile', userParams);
+      this.$store.dispatch('auth/updateProfile', userParams);
       this.close();
     },
   },

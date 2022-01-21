@@ -112,14 +112,13 @@ export default {
       );
     },
     userId() {
-      return this.$store.getters['auth/currentUser'].id;
+      return  this.$route.params.id ||this.$store.getters['auth/currentUser'].id
     },
     user() {
-      return this.isMe ? this.$store.getters['auth/currentUser'] : this.targetUser;
+      return  this.isMe ? this.$store.getters['auth/currentUser'] : this.targetUser;
     }
   },
   async created() {
-    if (this.isMe) return;
     axios
       .get(`http://localhost:3000/api/users/${this.userId}`)
       .then((response) => {

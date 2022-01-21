@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card @click="$router.push(`/users/${user.id}`)" >
     <v-card-title class="justify-center">
       <v-avatar size="120">
         <v-img
@@ -8,8 +8,8 @@
           class="grey lighten-2"
         ></v-img>
       </v-avatar>
-      <!-- <v-spacer></v-spacer> -->
-      <!-- <v-btn
+      <!-- <v-spacer></v-spacer>
+      <v-btn
       class="ma-2"
       title
       outlined
@@ -33,7 +33,7 @@
           <v-icon>mdi-account-details</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>{{ user.email }}</v-list-item-title>
+          <v-list-item-title>{{ user.introduction }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -46,6 +46,12 @@ export default {
     user: {
       type: Object,
     },
+    methods: {
+      profile() {
+        const userId = this.room.user.id
+        this.$route.push({ path: `/user`, params: userId })
+      }
+    }
   },
 };
 </script>

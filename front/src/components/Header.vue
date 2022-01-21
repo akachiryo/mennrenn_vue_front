@@ -22,7 +22,7 @@
       <v-tabs v-if="logging" right>
         <v-tab @click="myProfile"> マイページ</v-tab>
         <v-tab :to="'/rooms'">部屋一覧</v-tab>
-        <v-tab :to="'/rooms/new'"> 部屋作成</v-tab>
+        <v-tab :to="'/room/new'"> 部屋作成</v-tab>
         <v-tab @click="logout"> ログアウト</v-tab>
       </v-tabs>
       <!-- ログアウト中 -->
@@ -44,7 +44,7 @@
           <v-list-item :to="`/rooms`">
             <v-list-item-title>部屋一覧</v-list-item-title>
           </v-list-item>
-          <v-list-item :to="`/rooms/new`">
+          <v-list-item :to="`/room/new`">
             <v-list-item-title>部屋作成</v-list-item-title>
           </v-list-item>
           <v-list-item @click="logout">
@@ -92,7 +92,7 @@ export default {
     },
     myProfile() {
         const userId = this.$store.getters['auth/currentUser'].id
-        this.$router.push({ path: '/user', params: { userId }})
+        this.$router.push(`/users/${ userId }`)
       }
   },
 };

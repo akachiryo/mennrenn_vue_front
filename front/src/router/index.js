@@ -19,21 +19,10 @@ const router = new VueRouter({
     { path: '/about', component: About, name: 'About' },
     { path: '/signup', component: Signup, name: 'Signup' },
     { path: '/signin', component: Signin, name: 'Signin' },
-    { path: '/rooms/new', component: CreateRoom, name: 'CreateRoom' },
+    { path: '/room/new', component: CreateRoom, name: 'CreateRoom' },
     { path: '/rooms', component: IndexRoom, name: 'IndexRoom' },
     { path: '/rooms/:id', component: DetailRoom, name: 'DetailRoom' },
-    {
-      path: '/user',
-      component: Profile,
-      name: 'Profile',
-      // children: [
-      //   {
-      //     path: '/account/profile',
-      //     component: MyAccountProfile,
-      //     name: 'my-account-profile',
-      //   },
-      // ],
-    },
+    { path: '/users/:id', component: Profile, name: 'Profile'},
   ],
 });
 
