@@ -11,7 +11,7 @@
         <v-list-item-avatar color="grey darken-3">
           <v-img
             class="elevation-6"
-            src="https://picsum.photos/80/80/?random"
+            :src="room.user.avatar_url"
           ></v-img>
         </v-list-item-avatar>
         <v-list-item-content>

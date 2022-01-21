@@ -88,6 +88,7 @@ export default {
     logout() {
       if (confirm('ログアウトしますか？')) {
         this.$store.dispatch('auth/logout');
+        this.$router.push(`/`)
       }
     },
     myProfile() {

@@ -3,7 +3,7 @@
     <v-card-title class="justify-center">
       <v-avatar size="120">
         <v-img
-          src="https://cdn.vuetifyjs.com/images/john.jpg"
+          :src="user.avatar_url"
           aspect-ratio="1"
           class="grey lighten-2"
         ></v-img>
