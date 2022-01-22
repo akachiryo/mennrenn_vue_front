@@ -4,13 +4,14 @@
       <v-col>
         <v-card max-width="800" class="mx-auto" v-if="user">
           <v-card-title>
+
             <v-avatar size="120">
               <v-img
                 :src="user.avatar_url"
                 aspect-ratio="1"
                 class="grey lighten-2"
               >
-                <template>
+                <template v-if="isMe">
                   <v-row
                     class="fill-height ma-0"
                     align="center"

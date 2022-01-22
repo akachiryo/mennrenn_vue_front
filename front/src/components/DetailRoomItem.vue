@@ -7,7 +7,10 @@
       v-text="$dayjs(room.created_at).format('YYYY-MM-DD HH:mm:ss')"
     ></v-card-text>
     <v-card-actions>
-      <v-btn large dark color="indigo">
+      <v-btn
+      large
+      dark color="indigo"
+      @click="enterRoom">
         <v-icon>mdi-door-open</v-icon>
         部屋に入室する
       </v-btn>
@@ -39,6 +42,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   props: {
     room: {
@@ -57,6 +62,15 @@ export default {
     deleteRoom() {
       this.$emit('deleteRoom');
     },
+    async enterRoom() {
+    await axios.post(`http://localhost:3000/api/user_room`, {
+      user_room: {
+        room_id: this.room.id
+      }
+    })
+    // チャットルームに移動
+     this.$router.push('/chatroom')
+    }
   },
 };
 </script>
