@@ -98,7 +98,7 @@ export default {
               password_confirmation: this.passwordConfirmation,
             },
           });
-          this.$router.push(`login`);
+          this.$router.push({ path: `/signin` });
         } catch (err) {
           alert(err.response.data.error.messages);
         }

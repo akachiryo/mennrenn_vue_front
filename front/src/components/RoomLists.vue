@@ -1,11 +1,6 @@
 <template>
   <v-row>
-    <v-col
-      v-for="room in rooms"
-      :key="room.id"
-      cols="6"
-      md="4"
-    >
+    <v-col v-for="room in rooms" :key="room.id" cols="6" md="4">
       <room-item v-if="isExistRooms" :room="room"></room-item>
       <div class="text-center" v-else>一件もありません</div>
     </v-col>
@@ -13,22 +8,21 @@
 </template>
 
 <script>
-import RoomItem from './RoomItem.vue'
+import RoomItem from './RoomItem.vue';
 export default {
   props: {
     rooms: {
-      type: Array
+      type: Array,
     },
-    room: {}
+    room: {},
   },
   components: {
-    RoomItem
+    RoomItem,
   },
-   computed: {
+  computed: {
     isExistRooms() {
       return this.rooms.length > 0;
     },
-   }
-
-}
+  },
+};
 </script>

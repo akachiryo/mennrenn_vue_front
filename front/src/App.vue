@@ -3,10 +3,7 @@
     <Header />
     <Loading v-show="loading"></Loading>
     <v-main v-show="!loading">
-      <router-view 
-      @loadingTrue="loadingTrue" 
-      @loadingFalse="loadingFalse" 
-      />
+      <router-view @loadingTrue="loadingTrue" @loadingFalse="loadingFalse" />
     </v-main>
     <Footer />
   </v-app>

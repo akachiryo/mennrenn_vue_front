@@ -18,13 +18,12 @@ export default {
   },
   methods: {
     async createRoom(roomTitle, roomContent) {
-      const roomParams = {
+      await axios.post('http://localhost:3000/api/rooms', {
         room: {
           title: roomTitle,
           content: roomContent,
         },
-      };
-      await axios.post('http://localhost:3000/api/rooms', roomParams);
+      });
       this.$router.push({ path: `/rooms` });
     },
   },

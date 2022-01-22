@@ -35,7 +35,7 @@ export default {
     contentRules() {
       return [
         (v) => !!v || '詳細が必要です',
-        (v) => v & (v >= 140) || '140文字以内',
+        (v) => v.length <= 140 || '140文字以内',
       ];
     },
   },

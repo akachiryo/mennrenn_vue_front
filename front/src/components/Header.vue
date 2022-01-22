@@ -19,63 +19,51 @@
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-app-bar-title>MennRenn</v-app-bar-title>
       <!-- ログイン中 -->
-      <v-tabs
-      v-if="$store.getters['auth/currentUser']"
-      right
-      >
-        <v-tab
-          v-for="(loginList, index) in loginLists"
-          :key="index"
-          :to="`${loginList.url}`"
-        >
-          <div v-if="loginList.name === 'ログアウト'" @click="logout">
-            {{ loginList.name }}
-          </div>
-          <div v-else>
-            {{ loginList.name }}
-          </div>
-        </v-tab>
+      <v-tabs v-if="logging" right>
+        <v-tab @click="myProfile"> マイページ</v-tab>
+        <v-tab :to="'/rooms'">部屋一覧</v-tab>
+        <v-tab :to="'/room/new'"> 部屋作成</v-tab>
+        <v-tab @click="logout"> ログアウト</v-tab>
       </v-tabs>
       <!-- ログアウト中 -->
       <v-tabs v-else>
-        <v-tab
-          v-for="(logoutList, index) in logoutLists"
-          :key="index"
-          :to="`${logoutList.url}`"
-        >
-          {{ logoutList.name }}
-        </v-tab>
+        <v-tab :to="'/'"> ホーム</v-tab>
+        <v-tab :to="'/about'"> コンテンツ</v-tab>
+        <v-tab :to="'/signup'"> 新規登録</v-tab>
+        <v-tab :to="'/signin'"> ログイン</v-tab>
       </v-tabs>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
         <!-- ログイン中 -->
-        <v-list-item-group v-if="logining">
-          <v-list-item
-            v-for="(loginList, index) in loginLists"
-            :key="index"
-            :to="`${loginList.url}`"
-          >
-            <v-list-item-title
-              v-if="loginList.name === `ログアウト`"
-              @click="logout"
-            >
-              {{ loginList.name }}
-            </v-list-item-title>
-            <v-list-item-title v-else>
-              {{ loginList.name }}
-            </v-list-item-title>
+        <v-list-item-group v-if="logging">
+          <v-list-item @click="myProfile">
+            <v-list-item-title>マイページ</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/rooms`">
+            <v-list-item-title>部屋一覧</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/room/new`">
+            <v-list-item-title>部屋作成</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="logout">
+            <v-list-item-title>ログアウト</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
         <!-- ログアウト中 -->
         <v-list-item-group v-else>
-          <v-list-item
-            v-for="(logoutList, index) in logoutLists"
-            :key="index"
-            :to="`${logoutList.url}`"
-          >
-            <v-list-item-title>{{ logoutList.name }}</v-list-item-title>
+          <v-list-item :to="`/`">
+            <v-list-item-title>ホーム</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/about`">
+            <v-list-item-title>コンテンツ</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/signup`">
+            <v-list-item-title>新規登録</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/signin`">
+            <v-list-item-title>ログイン</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -84,28 +72,29 @@
 </template>
 
 <script>
-import constants from '../common/constants';
-
 export default {
   name: 'Header',
   data() {
     return {
       drawer: false,
-      loginLists: constants.loginLists,
-      logoutLists: constants.logoutLists,
     };
   },
   computed: {
     logging() {
-      return this.$store.getters['auth/currentUser']
+      return this.$store.getters['auth/currentUser'];
     }
   },
   methods: {
     logout() {
       if (confirm('ログアウトしますか？')) {
         this.$store.dispatch('auth/logout');
+        this.$router.push(`/`)
       }
     },
+    myProfile() {
+        const userId = this.$store.getters['auth/currentUser'].id
+        this.$router.push(`/users/${ userId }`)
+      }
   },
 };
 </script>
