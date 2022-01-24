@@ -24,7 +24,7 @@ const router = new VueRouter({
     { path: '/rooms', component: IndexRoom, name: 'IndexRoom' },
     { path: '/rooms/:id', component: DetailRoom, name: 'DetailRoom' },
     { path: '/users/:id', component: Profile, name: 'Profile'},
-    { path: '/chatroom', component: ChatRoom, name: 'ChatRoom'},
+    { path: '/chatroom/:id', component: ChatRoom, name: 'ChatRoom'},
   ],
 });
 

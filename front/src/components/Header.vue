@@ -24,6 +24,7 @@
         <v-tab :to="'/rooms'">部屋一覧</v-tab>
         <v-tab :to="'/room/new'"> 部屋作成</v-tab>
         <v-tab @click="logout"> ログアウト</v-tab>
+        <v-tab :to="'/chatroom/35'"> ルームチャット</v-tab>
       </v-tabs>
       <!-- ログアウト中 -->
       <v-tabs v-else>
