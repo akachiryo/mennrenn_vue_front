@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "dayjs": "^1.10.7",
     "vue": "^2.6.11",
+    "vue-advanced-chat": "^1.5.1",
     "vue-image-crop-upload": "^3.0.3",
     "vue-loading-template": "^1.3.2",
     "vue-router": "^3.2.0",
@@ -21,6 +22,7 @@
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
+    "@mdi/font": "^6.5.95",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",

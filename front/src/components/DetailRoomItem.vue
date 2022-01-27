@@ -7,13 +7,18 @@
       v-text="$dayjs(room.created_at).format('YYYY-MM-DD HH:mm:ss')"
     ></v-card-text>
     <v-card-actions>
-      <v-btn
-      large
-      dark color="indigo"
-      @click="enterRoom">
-        <v-icon>mdi-door-open</v-icon>
-        部屋に入室する
-      </v-btn>
+      <div v-if="room.is_full === false">
+        <v-btn large dark color="indigo" @click="enterRoom">
+          <v-icon>mdi-door-open</v-icon>
+          部屋に入室する
+        </v-btn>
+      </div>
+      <div v-else>
+        <v-btn large dark color="error lighten-1" @click="toRooms">
+          <v-icon>mdi-door-closed-lock </v-icon>
+          満室
+        </v-btn>
+      </div>
       <v-spacer></v-spacer>
       <div v-if="isMine">
         <v-btn
@@ -42,7 +47,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   props: {
@@ -62,15 +67,20 @@ export default {
     deleteRoom() {
       this.$emit('deleteRoom');
     },
+    toRooms() {
+      axios.get('http://localhost:3000/api/user_rooms', {
+        room_id: this.room.id,
+      }).then;
+      this.$router.push(`/rooms`);
+    },
     async enterRoom() {
-    await axios.post(`http://localhost:3000/api/user_room`, {
-      user_room: {
-        room_id: this.room.id
-      }
-    })
-    // チャットルームに移動
-     this.$router.push('/chatroom')
-    }
+      await axios.post(`http://localhost:3000/api/user_rooms`, {
+        user_room: {
+          room_id: this.room.id,
+        },
+      });
+      this.$router.push({ name: 'ChatRoom', params: { roomId: this.room.id } });
+    },
   },
 };
 </script>

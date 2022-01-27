@@ -2,9 +2,8 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-card max-width="800" class="mx-auto" v-if="user">
+        <v-card max-width="800" class="ma-10" v-if="user">
           <v-card-title>
-
             <v-avatar size="120">
               <v-img
                 :src="user.avatar_url"
@@ -59,18 +58,6 @@
 
             <v-list-item>
               <v-list-item-icon>
-                <v-icon color="indigo">mdi-email</v-icon>
-              </v-list-item-icon>
-
-              <v-list-item-content>
-                <v-list-item-title>{{ user.email }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-
-            <v-divider inset></v-divider>
-
-            <v-list-item>
-              <v-list-item-icon>
                 <v-icon color="indigo">mdi-account-details</v-icon>
               </v-list-item-icon>
 
@@ -113,11 +100,15 @@ export default {
       );
     },
     userId() {
-      return  this.$route.params.id ||this.$store.getters['auth/currentUser'].id
+      return (
+        this.$route.params.id || this.$store.getters['auth/currentUser'].id
+      );
     },
     user() {
-      return  this.isMe ? this.$store.getters['auth/currentUser'] : this.targetUser;
-    }
+      return this.isMe
+        ? this.$store.getters['auth/currentUser']
+        : this.targetUser;
+    },
   },
   async created() {
     axios

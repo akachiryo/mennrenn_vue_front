@@ -21,16 +21,18 @@ const mutations = {
   SET_CURRENT_USER: (state, data) => {
     state.currentUser = data;
     localStorage.setItem('currentUser', JSON.stringify(data));
-    axios.defaults.headers.common['Authorization'] = `Bearer ${data.user.token}`;
-    console.log(data.user.token)
-    console.log(data.user)
-    console.log(data)
+    axios.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${data.user.token}`;
+    console.log(data.user.token);
+    console.log(data.user);
+    console.log(data);
   },
   CLEAR_CURRENT_USER: () => {
     state.currentUser = null;
     // Object.assign(state, getDefaultState())
     localStorage.removeItem('currentUser');
-    location.reload();
+    // location.reload();
   },
 };
 
@@ -63,5 +65,5 @@ export default {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

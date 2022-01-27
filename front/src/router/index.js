@@ -8,12 +8,13 @@ import CreateRoom from '../views/CreateRoom.vue';
 import IndexRoom from '../views/IndexRoom.vue';
 import DetailRoom from '../views/DetailRoom.vue';
 import Profile from '../views/Profile.vue';
-// import MyAccountProfile from '../views/MyAccountProfile.vue';
+import ChatRoom from '../views/ChatRoom.vue';
+import ChatRooms from '../views/ChatRooms.vue';
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     { path: '/', component: Home, name: 'Home' },
     { path: '/about', component: About, name: 'About' },
@@ -22,7 +23,9 @@ const router = new VueRouter({
     { path: '/room/new', component: CreateRoom, name: 'CreateRoom' },
     { path: '/rooms', component: IndexRoom, name: 'IndexRoom' },
     { path: '/rooms/:id', component: DetailRoom, name: 'DetailRoom' },
-    { path: '/users/:id', component: Profile, name: 'Profile'},
+    { path: '/users/:id', component: Profile, name: 'Profile' },
+    { path: '/chatrooms', component: ChatRooms, name: 'ChatRooms' },
+    { path: '/chatroom/:id', component: ChatRoom, name: 'ChatRoom' },
   ],
 });
 

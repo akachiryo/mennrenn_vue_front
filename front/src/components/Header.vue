@@ -17,12 +17,13 @@
         ></v-img>
       </template>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-app-bar-title>MennRenn</v-app-bar-title>
+      <v-app-bar-title @click="toHome">MennRenn</v-app-bar-title>
       <!-- ログイン中 -->
       <v-tabs v-if="logging" right>
         <v-tab @click="myProfile"> マイページ</v-tab>
         <v-tab :to="'/rooms'">部屋一覧</v-tab>
         <v-tab :to="'/room/new'"> 部屋作成</v-tab>
+        <v-tab :to="'/chatrooms'"> ルームチャット</v-tab>
         <v-tab @click="logout"> ログアウト</v-tab>
       </v-tabs>
       <!-- ログアウト中 -->
@@ -46,6 +47,9 @@
           </v-list-item>
           <v-list-item :to="`/room/new`">
             <v-list-item-title>部屋作成</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/chatrooms`">
+            <v-list-item-title>ルームチャット</v-list-item-title>
           </v-list-item>
           <v-list-item @click="logout">
             <v-list-item-title>ログアウト</v-list-item-title>
@@ -82,19 +86,23 @@ export default {
   computed: {
     logging() {
       return this.$store.getters['auth/currentUser'];
-    }
+    },
   },
   methods: {
     logout() {
       if (confirm('ログアウトしますか？')) {
         this.$store.dispatch('auth/logout');
-        this.$router.push(`/`)
+        location.reload();
+        this.$router.push(`/`);
       }
     },
     myProfile() {
-        const userId = this.$store.getters['auth/currentUser'].id
-        this.$router.push(`/users/${ userId }`)
-      }
+      const userId = this.$store.getters['auth/currentUser'].id;
+      this.$router.push(`/users/${userId}`);
+    },
+    toHome() {
+      this.$router.push(`/`);
+    }
   },
 };
 </script>
