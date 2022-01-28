@@ -12,6 +12,7 @@
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.7",
+    "qs": "^6.10.3",
     "vue": "^2.6.11",
     "vue-advanced-chat": "^1.5.1",
     "vue-image-crop-upload": "^3.0.3",

@@ -17,11 +17,12 @@ export default {
     RoomForm,
   },
   methods: {
-    async createRoom(roomTitle, roomContent) {
+    async createRoom(roomTitle, roomContent, selectedTags) {
       await axios.post('http://localhost:3000/api/rooms', {
         room: {
           title: roomTitle,
           content: roomContent,
+          tag_names: selectedTags
         },
       });
       this.$router.push({ path: `/rooms` });
