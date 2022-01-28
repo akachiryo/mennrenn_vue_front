@@ -22,6 +22,18 @@
         ></v-list-item-action>
       </v-list-item>
     </v-card-actions>
+    <v-card-text class="text--primary" style="min-height: 64px;">
+            <v-chip
+                    class="ma-1"
+                    color="orange"
+                    text-color="white"
+                    small
+                    v-for="tag in room.tags" :key="tag.name"
+            >
+              <v-icon left class="mr-0">mdi-music-accidental-sharp</v-icon>
+              {{tag.name}}
+            </v-chip>
+          </v-card-text>
   </v-card>
 </template>
 

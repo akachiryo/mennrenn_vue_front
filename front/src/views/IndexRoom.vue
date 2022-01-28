@@ -95,13 +95,6 @@ export default {
               this.pagingMeta = res.data.meta
               // this.$emit('loadingFalse');
           },
-    // async fetchRooms() {
-    //     this.$emit('loadingTrue');
-    //     const res = await axios.get(`http://localhost:3000/api/rooms`, { params: { page: this.currentPage } })
-    //     this.rooms = res.data.rooms
-    //     this.pagingMeta = res.data.meta
-    //     this.$emit('loadingFalse');
-    // },
      async fetchTags() {
               const res = await axios.get(`http://localhost:3000/api/tags`)
               this.tags = res.data
