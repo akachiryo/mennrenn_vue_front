@@ -97,7 +97,7 @@ export default {
           },
      async fetchTags() {
               const res = await axios.get(`http://localhost:3000/api/tags`)
-              this.tags = res.data
+              this.tags = res.data.tags
           },
     paging(page) {
       this.currentPage = page

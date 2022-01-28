@@ -17,7 +17,7 @@
         ></v-img>
       </template>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-app-bar-title @click="toHome">MennRenn</v-app-bar-title>
+      <v-app-bar-title @click="toHome" class="wrap-text">MennRenn</v-app-bar-title>
       <!-- ログイン中 -->
       <v-tabs v-if="logging" right>
         <v-tab @click="myProfile"> マイページ</v-tab>
@@ -92,7 +92,7 @@ export default {
     logout() {
       if (confirm('ログアウトしますか？')) {
         this.$store.dispatch('auth/logout');
-        location.reload();
+        // location.reload();
         this.$router.push(`/`);
       }
     },
@@ -146,5 +146,10 @@ export default {
   @include display_pc {
     display: block !important;
   }
+}
+
+.wrap-text {
+  overflow: visible !important;
+  margin-right: 50px !important;
 }
 </style>
