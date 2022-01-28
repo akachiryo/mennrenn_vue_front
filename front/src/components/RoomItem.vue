@@ -9,7 +9,10 @@
     <v-card-actions>
       <v-list-item class="grow">
         <v-list-item-avatar color="grey darken-3">
-          <v-img class="elevation-6" :src="room.user.avatar_url"></v-img>
+          <v-img
+          class="elevation-6"
+          :src="room.user.avatar_url"
+          ></v-img>
         </v-list-item-avatar>
         <v-list-item-content>
           <v-list-item-title>{{ room.user.name }}</v-list-item-title>
