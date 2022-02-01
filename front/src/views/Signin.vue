@@ -25,9 +25,7 @@
           </v-card-text>
 
           <v-card-actions>
-            <router-link to="/signup" class="text-decoration-none caption"
-              >ユーザー登録ページへ</router-link
-            >
+            <p></p>
             <v-spacer></v-spacer>
             <v-btn dark color="indigo" @click="login">ログイン</v-btn>
           </v-card-actions>
@@ -65,7 +63,7 @@ export default {
             },
           };
           await this.$store.dispatch('auth/login', sessionParams);
-          this.$router.push(`/`);
+          this.$router.push(`/rooms`);
         } catch (error) {
           alert(error.response.data.error.messages);
         }
