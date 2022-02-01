@@ -38,7 +38,7 @@ export default {
   methods: {
     enterChatRoom(roomId) {
       this.$router.push(`/chatroom/${roomId}`);
-      this.$emit(`fetchMessages`)
+      this.$emit(`fetchMessages`);
     },
   },
 };

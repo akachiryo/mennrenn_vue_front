@@ -1,11 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      absolute
-      color="#6A76AB"
-      dark
-      prominent
-    >
+    <v-app-bar absolute color="#6A76AB" dark prominent>
       <template v-slot:img="{ props }">
         <v-img
           v-bind="props"
@@ -13,7 +8,9 @@
         ></v-img>
       </template>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-app-bar-title @click="toHome" class="wrap-text">MennRenn</v-app-bar-title>
+      <v-app-bar-title @click="toHome" class="wrap-text"
+        >MennRenn</v-app-bar-title
+      >
       <!-- ログイン中 -->
       <v-tabs v-if="logging" right>
         <v-tab @click="myProfile"> マイページ</v-tab>
@@ -98,7 +95,7 @@ export default {
     },
     toHome() {
       this.$router.push(`/`);
-    }
+    },
   },
 };
 </script>

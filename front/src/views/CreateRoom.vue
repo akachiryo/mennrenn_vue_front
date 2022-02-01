@@ -22,7 +22,7 @@ export default {
         room: {
           title: roomTitle,
           content: roomContent,
-          tag_names: selectedTags
+          tag_names: selectedTags,
         },
       });
       this.$router.push({ path: `/rooms` });
