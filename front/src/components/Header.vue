@@ -4,11 +4,7 @@
       absolute
       color="#6A76AB"
       dark
-      shrink-on-scroll
       prominent
-      src="https://picsum.photos/1920/1080?random"
-      fade-img-on-scroll
-      scroll-target="#scrolling-techniques-3"
     >
       <template v-slot:img="{ props }">
         <v-img
@@ -27,7 +23,7 @@
         <v-tab @click="logout"> ログアウト</v-tab>
       </v-tabs>
       <!-- ログアウト中 -->
-      <v-tabs v-else>
+      <v-tabs v-else right>
         <v-tab :to="'/'"> ホーム</v-tab>
         <v-tab :to="'/about'"> コンテンツ</v-tab>
         <v-tab :to="'/signup'"> 新規登録</v-tab>

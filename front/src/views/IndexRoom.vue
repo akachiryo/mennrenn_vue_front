@@ -1,7 +1,18 @@
 <template>
-  <v-container>
+<v-main class="pa-10">
+
+      <v-row>
+        <v-col cols="3">
+
     <template>
       <v-card class="mb-3">
+          <v-row>
+            <template>
+              <v-col cols="12">
+                <v-text-field label="RoomTitle" v-model="query.roomTitle" @input="fetchRooms"></v-text-field>
+              </v-col>
+            </template>
+          </v-row>
         <v-card-text>
           <header>絞り込み条件</header>
           <v-row dense justify="start">
@@ -18,16 +29,11 @@
               </v-checkbox>
             </template>
           </v-row>
-          <v-row>
-            <template>
-              <v-col cols="12">
-                <v-text-field label="RoomTitle" v-model="query.roomTitle" @input="fetchRooms"></v-text-field>
-              </v-col>
-            </template>
-          </v-row>
         </v-card-text>
       </v-card>
     </template>
+        </v-col>
+        <v-col cols="9">
     <v-row
      justify="center"
      align-content="center">
@@ -35,6 +41,11 @@
         <room-item v-if="isExistRooms" :room="room"></room-item>
         <div class="text-center" v-else>一件もありません</div>
       </v-col>
+    </v-row>
+    <v-row
+     justify="center"
+     align-content="center"
+    >
       <template v-if="pagingMeta">
         <v-pagination
                 color="indigo"
@@ -44,7 +55,11 @@
         ></v-pagination>
       </template>
     </v-row>
-  </v-container>
+
+        </v-col>
+
+      </v-row>
+</v-main>
 </template>
 
 <script>
