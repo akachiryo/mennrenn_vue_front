@@ -1,8 +1,12 @@
 <template>
-  <v-container align="center" justify="center">
+  <v-container>
     <v-row>
       <v-col>
-        <v-card max-width="800" class="ma-10" v-if="user">
+        <v-card
+          max-width="800"
+          class="mx-auto my-10"
+          v-if="user"
+        >
           <v-card-title>
             <v-avatar size="120">
               <v-img
@@ -63,8 +67,8 @@
               </v-list-item-content>
             </v-list-item>
           </v-list>
-          <profile-edit-modal ref="dialog"></profile-edit-modal>
         </v-card>
+        <profile-edit-modal ref="dialog"></profile-edit-modal>
       </v-col>
     </v-row>
   </v-container>
