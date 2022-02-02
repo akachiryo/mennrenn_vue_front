@@ -1,51 +1,67 @@
 <template>
   <v-app>
-    <v-app-bar
-      absolute
-      color="#43a047"
-      dark
-      shrink-on-scroll
-      prominent
-      src="https://picsum.photos/1920/1080?random"
-      fade-img-on-scroll
-      scroll-target="#scrolling-techniques-5"
-      scroll-threshold="500"
-    >
+    <v-app-bar absolute color="#6A76AB" dark prominent>
       <template v-slot:img="{ props }">
-          <v-img
-            v-bind="props"
-            gradient="to top right, rgba(55,236,186,.7), rgba(25,32,72,.7)"
-          ></v-img>
+        <v-img
+          v-bind="props"
+          gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
+        ></v-img>
       </template>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-app-bar-title>MennRenn</v-app-bar-title>
-      <v-spacer></v-spacer>
-      <v-tabs>
-        <v-tab
-        v-for="(menuItem, index) in menuItems"
-        :key="index"
-        >
-          {{ menuItem.name }}
-        </v-tab>
-      </v-tabs>
-
-    </v-app-bar>
-    <v-navigation-drawer
-    v-model="drawer"
-    fixed
-    temporary
-    >
-      <v-list
-        nav
-        dense
+      <v-app-bar-title @click="toHome" class="wrap-text"
+        >MennRenn</v-app-bar-title
       >
-        <v-list-item-group>
-         <v-list-item
-      v-for="(menuItem, index) in menuItems"
-      :key="index"
-    >
-      <v-list-item-title>{{ menuItem.name }}</v-list-item-title>
-    </v-list-item>
+      <!-- ログイン中 -->
+      <v-tabs v-if="logging" right>
+        <v-tab @click="myProfile"> マイページ</v-tab>
+        <v-tab :to="'/rooms'">部屋一覧</v-tab>
+        <v-tab :to="'/room/new'"> 部屋作成</v-tab>
+        <v-tab :to="'/chatrooms'"> ルームチャット</v-tab>
+        <v-tab @click="logout"> ログアウト</v-tab>
+      </v-tabs>
+      <!-- ログアウト中 -->
+      <v-tabs v-else right>
+        <v-tab :to="'/'"> ホーム</v-tab>
+        <v-tab :to="'/about'"> コンテンツ</v-tab>
+        <v-tab :to="'/signup'"> 新規登録</v-tab>
+        <v-tab :to="'/signin'"> ログイン</v-tab>
+      </v-tabs>
+    </v-app-bar>
+
+    <v-navigation-drawer v-model="drawer" fixed temporary>
+      <v-list nav dense>
+        <!-- ログイン中 -->
+        <v-list-item-group v-if="logging">
+          <v-list-item @click="myProfile">
+            <v-list-item-title>マイページ</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/rooms`">
+            <v-list-item-title>部屋一覧</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/room/new`">
+            <v-list-item-title>部屋作成</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/chatrooms`">
+            <v-list-item-title>ルームチャット</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="logout">
+            <v-list-item-title>ログアウト</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+        <!-- ログアウト中 -->
+        <v-list-item-group v-else>
+          <v-list-item :to="`/`">
+            <v-list-item-title>ホーム</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/about`">
+            <v-list-item-title>コンテンツ</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/signup`">
+            <v-list-item-title>新規登録</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/signin`">
+            <v-list-item-title>ログイン</v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -53,19 +69,37 @@
 </template>
 
 <script>
-import constants from '../common/constants'
- 
 export default {
   name: 'Header',
-  data () {
+  data() {
     return {
       drawer: false,
-      menuItems: constants.menuItems
-    }
-  }
-}
+    };
+  },
+  computed: {
+    logging() {
+      return this.$store.getters['auth/currentUser'];
+    },
+  },
+  methods: {
+    logout() {
+      if (confirm('ログアウトしますか？')) {
+        this.$store.dispatch('auth/logout');
+        // location.reload();
+        this.$router.push(`/`);
+      }
+    },
+    myProfile() {
+      const userId = this.$store.getters['auth/currentUser'].id;
+      this.$router.push(`/users/${userId}`);
+    },
+    toHome() {
+      this.$router.push(`/`);
+    },
+  },
+};
 </script>
- 
+
 <style lang="scss" scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -101,9 +135,14 @@ export default {
 
 .v-tabs {
   display: none;
- 
+
   @include display_pc {
     display: block !important;
   }
 }
-</style> 
+
+.wrap-text {
+  overflow: visible !important;
+  margin-right: 50px !important;
+}
+</style>
