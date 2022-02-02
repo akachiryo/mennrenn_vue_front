@@ -53,16 +53,18 @@ export default {
           this.room = response.data;
         });
     },
-    async updateRoom(roomTitle, roomContent) {
+    async updateRoom(roomTitle, roomContent, selectedTags) {
       await axios.patch(`http://localhost:3000//api/rooms/${this.roomId}`, {
         room: {
           title: roomTitle,
           content: roomContent,
-        },
+          tag_names: selectedTags
+        }
       });
-      this.$refs.dialog.close();
       this.room.title = roomTitle;
       this.room.content = roomContent;
+      this.room.tag_names = selectedTags;
+      this.$refs.dialog.close();
     },
     async deleteRoom() {
       if (confirm('削除しますか？')) {

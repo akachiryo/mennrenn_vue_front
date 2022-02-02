@@ -13,43 +13,45 @@
           :rules="contentRules"
           label="Content"
         ></v-textarea>
-         <v-col cols="12">
-                <template>
-                  <v-container fluid>
-                    <v-combobox
-                            v-model="selectedTags"
-                            :items="tags"
-                            :search-input.sync="search"
-                            hide-selected
-                            hint="最大5つまで登録できます"
-                            label="Add some tags"
-                            multiple
-                            persistent-hint
-                            small-chips
-                            :clearable="true"
-                            :deletable-chips="true"
-                    >
-                      <template v-slot:no-data>
-                        <v-list-item>
-                          <v-list-item-content>
-                            <v-list-item-title>
-                              タグ"<strong>{{ search }}</strong>"はまだ登録されていません。<kbd>enter</kbd>で登録できます。
-                            </v-list-item-title>
-                          </v-list-item-content>
-                        </v-list-item>
-                      </template>
-                    </v-combobox>
-                  </v-container>
+        <v-col cols="12">
+          <template>
+            <v-container fluid>
+              <v-combobox
+                v-model="selectedTags"
+                :items="tags"
+                :search-input.sync="search"
+                hide-selected
+                hint="最大5つまで登録できます"
+                label="Add some tags"
+                multiple
+                persistent-hint
+                small-chips
+                :clearable="true"
+                :deletable-chips="true"
+              >
+                <template v-slot:no-data>
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        タグ"<strong>{{ search }}</strong
+                        >"はまだ登録されていません。<kbd>enter</kbd>で登録できます。
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
                 </template>
-              </v-col>
+              </v-combobox>
+            </v-container>
+          </template>
+        </v-col>
       </v-form>
     </v-card-text>
     <v-card-actions>
-      <v-btn 
-      :dark="isValid"
-      color="indigo"
-      :disabled="!isValid"
-      @click="createRoom">
+      <v-btn
+        :dark="isValid"
+        color="indigo"
+        :disabled="!isValid"
+        @click="createRoom"
+      >
         ルーム作成
       </v-btn>
     </v-card-actions>
@@ -57,7 +59,7 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from 'axios';
 export default {
   data: () => ({
     valid: true,
@@ -66,13 +68,13 @@ export default {
     roomContent: '',
     selectedTags: [],
     search: null,
-    tags: []
+    tags: [],
   }),
   created() {
-    this.fetchTags()
+    this.fetchTags();
   },
   computed: {
-     isValid() {
+    isValid() {
       return (
         this.roomTitle.length > 0 &&
         this.roomContent.length > 0 &&
@@ -91,24 +93,29 @@ export default {
   },
   methods: {
     createRoom() {
-      this.$emit(`created`, this.roomTitle, this.roomContent, this.selectedTags);
+      this.$emit(
+        `created`,
+        this.roomTitle,
+        this.roomContent,
+        this.selectedTags
+      );
       this.roomTitle = '';
       this.roomContent = '';
-      this.selectedTags = []
+      this.selectedTags = [];
     },
     async fetchTags() {
-        const res = await axios.get(`http://localhost:3000/api/tags`)
-        this.tags = res.data.tags.map((tag) => {
-            return tag.name
-        })
-    }
+      const res = await axios.get(`http://localhost:3000/api/tags`);
+      this.tags = res.data.tags.map((tag) => {
+        return tag.name;
+      });
+    },
   },
   watch: {
-      model (val) {
-          if (val.length > 5) {
-              this.$nextTick(() => this.model.pop())
-          }
-      },
+    model(val) {
+      if (val.length > 5) {
+        this.$nextTick(() => this.model.pop());
+      }
     },
+  },
 };
 </script>

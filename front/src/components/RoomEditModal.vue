@@ -25,23 +25,24 @@
                 <template>
                   <v-container fluid>
                     <v-combobox
-                            v-model="selectedTags"
-                            :items="tags"
-                            :search-input.sync="search"
-                            hide-selected
-                            hint="最大5つまで登録できます"
-                            label="Add some tags"
-                            multiple
-                            persistent-hint
-                            small-chips
-                            :clearable="true"
-                            :deletable-chips="true"
+                      v-model="selectedTags"
+                      :items="tags"
+                      :search-input.sync="search"
+                      hide-selected
+                      hint="最大5つまで登録できます"
+                      label="Add some tags"
+                      multiple
+                      persistent-hint
+                      small-chips
+                      :clearable="true"
+                      :deletable-chips="true"
                     >
                       <template v-slot:no-data>
                         <v-list-item>
                           <v-list-item-content>
                             <v-list-item-title>
-                              タグ"<strong>{{ search }}</strong>"はまだ登録されていません。<kbd>enter</kbd>で登録できます。
+                              タグ"<strong>{{ search }}</strong
+                              >"はまだ登録されていません。<kbd>enter</kbd>で登録できます。
                             </v-list-item-title>
                           </v-list-item-content>
                         </v-list-item>
@@ -60,7 +61,7 @@
             :dark="isValid"
             color="indigo"
             :disabled="!isValid"
-            @click="updateRoom"
+            @click="update"
             >更新</v-btn
           >
         </v-card-actions>
@@ -70,7 +71,7 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from 'axios';
 
 export default {
   props: {
@@ -85,16 +86,16 @@ export default {
       roomContent: null,
       selectedTags: [],
       search: null,
-      tags: []
+      tags: [],
     };
   },
   created() {
     this.roomTitle = this.room.title;
     this.roomContent = this.room.content;
     this.selectedTags = this.room.tags.map((tag) => {
-                            return tag.name
-                        })
-      this.fetchTags()
+      return tag.name;
+    });
+    this.fetchTags();
   },
   computed: {
     isValid() {
@@ -104,7 +105,7 @@ export default {
         this.roomContent.length <= 140
       );
     },
-     roomId() {
+    roomId() {
       return this.$route.params.id;
     },
   },
@@ -116,31 +117,21 @@ export default {
       this.dialog = false;
     },
     update() {
-      this.$emit('update', this.roomTitle, this.roomContent);
-    },
-    async updateRoom() {
-      await axios.patch(`http://localhost:3000//api/rooms/${this.roomId}`, {
-        room: {
-          title: this.room.title,
-          content: this.room.content,
-          tag_names: this.selectedTags
-        },
-      });
-        this.close()
+      this.$emit('update', this.roomTitle, this.roomContent, this.selectedTags);
     },
     async fetchTags() {
-        const res = await axios.get(`http://localhost:3000/api/tags`)
-        this.tags = res.data.tags.map((tag) => {
-            return tag.name
-        })
-    }
+      const res = await axios.get(`http://localhost:3000/api/tags`);
+      this.tags = res.data.tags.map((tag) => {
+        return tag.name;
+      });
+    },
   },
   watch: {
-      model (val) {
-          if (val.length > 5) {
-              this.$nextTick(() => this.model.pop())
-          }
-      },
+    model(val) {
+      if (val.length > 5) {
+        this.$nextTick(() => this.model.pop());
+      }
     },
+  },
 };
 </script>

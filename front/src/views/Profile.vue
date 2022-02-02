@@ -2,7 +2,11 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-card max-width="800" class="ma-10" v-if="user">
+        <v-card
+          max-width="800"
+          class="mx-auto my-10"
+          v-if="user"
+        >
           <v-card-title>
             <v-avatar size="120">
               <v-img
@@ -27,9 +31,7 @@
                 </template>
               </v-img>
             </v-avatar>
-
             <avatar-upload ref="avatarUploadDialog"></avatar-upload>
-
             <v-spacer></v-spacer>
             <v-btn
               v-if="isMe"
@@ -42,25 +44,20 @@
               <v-icon left>mdi-pencil</v-icon> プロフィール編集
             </v-btn>
           </v-card-title>
-
           <v-list>
             <v-list-item>
               <v-list-item-icon>
                 <v-icon color="indigo">mdi-account</v-icon>
               </v-list-item-icon>
-
               <v-list-item-content>
                 <v-list-item-title>{{ user.name }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-
             <v-divider inset></v-divider>
-
             <v-list-item>
               <v-list-item-icon>
                 <v-icon color="indigo">mdi-account-details</v-icon>
               </v-list-item-icon>
-
               <v-list-item-content>
                 <v-list-item-title>
                   <span style="white-space: pre-line">
@@ -70,8 +67,8 @@
               </v-list-item-content>
             </v-list-item>
           </v-list>
-          <profile-edit-modal ref="dialog"></profile-edit-modal>
         </v-card>
+        <profile-edit-modal ref="dialog"></profile-edit-modal>
       </v-col>
     </v-row>
   </v-container>
