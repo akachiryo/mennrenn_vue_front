@@ -11,8 +11,16 @@
       <v-app-bar-title @click="toHome" class="wrap-text"
         >MennRenn</v-app-bar-title
       >
+      <!-- 管理者 -->
+      <v-tabs v-if="isAdmin === true" right>
+        <v-tab @click="myProfile"> ユーザー一覧</v-tab>
+        <v-tab :to="'/rooms'">部屋一覧</v-tab>
+        <v-tab :to="'/room/new'"> 部屋作成</v-tab>
+        <v-tab :to="'/chatrooms'"> ルームチャット</v-tab>
+        <v-tab @click="logout"> ログアウト</v-tab>
+      </v-tabs>
       <!-- ログイン中 -->
-      <v-tabs v-if="logging" right>
+      <v-tabs v-else-if="logging" right>
         <v-tab @click="myProfile"> マイページ</v-tab>
         <v-tab :to="'/rooms'">部屋一覧</v-tab>
         <v-tab :to="'/room/new'"> 部屋作成</v-tab>
@@ -88,6 +96,9 @@ export default {
         // location.reload();
         this.$router.push(`/`);
       }
+    },
+    isAdmin() {
+      this.$store.getters['auth/currentUser'].admin === true
     },
     myProfile() {
       const userId = this.$store.getters['auth/currentUser'].id;

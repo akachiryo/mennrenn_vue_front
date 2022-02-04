@@ -15,3 +15,12 @@ module.exports = {
     },
   },
 };
+
+module.exports = {
+  publicPath: '/vue-cli-app'
+}
+
+// vue-cli-ts-app
+module.exports = {
+  publicPath: '/vue-cli-ts-app'
+}
