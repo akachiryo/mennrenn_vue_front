@@ -1,7 +1,6 @@
 module.exports = {
   transpileDependencies: ['vuetify'],
   publicPath: './',
-  // baseUrl: '/aaa/view',
   css: {
     loaderOptions: {
       scss: {
@@ -17,7 +16,3 @@ module.exports = {
     },
   },
 };
-
-// module.exports = {
-//   baseUrl: '/aaa/view',
-// }
