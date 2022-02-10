@@ -84,11 +84,14 @@ export default {
       ];
     },
   },
+  mounted() {
+    },
   methods: {
     async signup() {
       if (this.$refs.form.validate()) {
         try {
-          await axios.post(`http://localhost:3000/api/users`, {
+          axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+          await axios.post(`/api/users`, {
             user: {
               name: this.name,
               email: this.email,
