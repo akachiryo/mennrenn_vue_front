@@ -84,8 +84,6 @@ export default {
       ];
     },
   },
-  mounted() {
-    },
   methods: {
     async signup() {
       if (this.$refs.form.validate()) {
