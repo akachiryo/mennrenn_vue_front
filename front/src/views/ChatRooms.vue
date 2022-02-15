@@ -22,7 +22,8 @@ export default {
   },
   methods: {
     fetchJoinRoom() {
-      axios.get('http://localhost:3000/api/user_rooms').then((response) => {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      axios.get('/api/user_rooms').then((response) => {
         this.user_rooms = response.data;
       });
     },

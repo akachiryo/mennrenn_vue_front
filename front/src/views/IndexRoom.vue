@@ -99,6 +99,7 @@ export default {
   methods: {
     async fetchRooms() {
       //  this.$emit('loadingTrue');
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       const searchParams = {
         q: {
           title: this.query.roomTitle,
@@ -109,7 +110,7 @@ export default {
       const params = { ...searchParams, ...pagingParams };
       const paramsSerializer = (params) =>
         qs.stringify(params, { arrayFormat: 'brackets' });
-      const res = await axios.get(`http://localhost:3000/api/rooms`, {
+      const res = await axios.get(`/api/rooms`, {
         params,
         paramsSerializer,
       });
@@ -118,7 +119,8 @@ export default {
       // this.$emit('loadingFalse');
     },
     async fetchTags() {
-      const res = await axios.get(`http://localhost:3000/api/tags`);
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      const res = await axios.get(`/api/tags`);
       this.tags = res.data.tags;
     },
     paging(page) {

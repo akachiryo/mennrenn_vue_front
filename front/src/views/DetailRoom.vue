@@ -47,14 +47,16 @@ export default {
   },
   methods: {
     fetchRoom() {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       axios
-        .get(`http://localhost:3000/api/rooms/${this.roomId}`)
+        .get(`/api/rooms/${this.roomId}`)
         .then((response) => {
           this.room = response.data;
         });
     },
     async updateRoom(roomTitle, roomContent, selectedTags) {
-      await axios.patch(`http://localhost:3000//api/rooms/${this.roomId}`, {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      await axios.patch(`/api/rooms/${this.roomId}`, {
         room: {
           title: roomTitle,
           content: roomContent,
@@ -67,8 +69,9 @@ export default {
       this.$refs.dialog.close();
     },
     async deleteRoom() {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       if (confirm('削除しますか？')) {
-        await axios.delete(`http://localhost:3000/api/rooms/${this.roomId}`);
+        await axios.delete(`/api/rooms/${this.roomId}`);
         this.$router.push('/rooms');
       }
     },
