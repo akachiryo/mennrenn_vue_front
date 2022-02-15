@@ -68,13 +68,15 @@ export default {
       this.$emit('deleteRoom');
     },
     toRooms() {
-      axios.get('http://localhost:3000/api/user_rooms', {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      axios.get('/api/user_rooms', {
         room_id: this.room.id,
       }).then;
       this.$router.push(`/rooms`);
     },
     async enterRoom() {
-      await axios.post(`http://localhost:3000/api/user_rooms`, {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      await axios.post(`/api/user_rooms`, {
         user_room: {
           room_id: this.room.id,
         },

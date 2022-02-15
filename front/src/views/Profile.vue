@@ -108,8 +108,9 @@ export default {
     },
   },
   async created() {
+    axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
     axios
-      .get(`http://localhost:3000/api/users/${this.userId}`)
+      .get(`/api/users/${this.userId}`)
       .then((response) => {
         this.targetUser = response.data;
       });

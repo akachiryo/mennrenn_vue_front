@@ -172,22 +172,25 @@ export default {
   },
   methods: {
     fetchRoom() {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       axios
-        .get(`http://localhost:3000/api/rooms/${this.roomId}`)
+        .get(`/api/rooms/${this.roomId}`)
         .then((response) => {
           this.room = response.data;
         });
     },
     fetchMessages() {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       axios
-        .get(`http://localhost:3000/api/room_messages/${this.roomId}`)
+        .get(`/api/room_messages/${this.roomId}`)
         .then((response) => {
           this.messages = response.data;
         });
     },
     async sendMessage() {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       await axios
-        .post('http://localhost:3000/api/room_messages', {
+        .post('/api/room_messages', {
           room_message: {
             content: this.message,
             room_id: this.room.id,
@@ -199,13 +202,15 @@ export default {
       this.message = '';
     },
     async deleteRoom() {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       if (confirm('削除しますか？')) {
-        await axios.delete(`http://localhost:3000/api/rooms/${this.roomId}`);
+        await axios.delete(`/api/rooms/${this.roomId}`);
         this.$router.push('/rooms');
       }
     },
     fetchJoinRoom() {
-      axios.get('http://localhost:3000/api/user_rooms').then((response) => {
+      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      axios.get('/api/user_rooms').then((response) => {
         this.user_rooms = response.data;
       });
     },
