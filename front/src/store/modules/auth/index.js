@@ -40,8 +40,7 @@ const actions = {
   async login({ commit }, sessionParams) {
     axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
     const res = await axios.post(
-      // `http://localhost:3000/api/session`,
-      `/api/session`,
+      `/api/v1/session`,
       sessionParams
     );
     commit('SET_CURRENT_USER', res.data);
@@ -53,7 +52,7 @@ const actions = {
   async updateProfile({ commit, state }, userParams) {
     axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
     const res = await axios.patch(
-      `/api/me/account`,
+      `/api/v1/me/account`,
       userParams
     );
     commit('SET_CURRENT_USER', {

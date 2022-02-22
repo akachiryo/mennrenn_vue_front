@@ -174,7 +174,7 @@ export default {
     fetchRoom() {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       axios
-        .get(`/api/rooms/${this.roomId}`)
+        .get(`/api/v1/rooms/${this.roomId}`)
         .then((response) => {
           this.room = response.data;
         });
@@ -182,7 +182,7 @@ export default {
     fetchMessages() {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       axios
-        .get(`/api/room_messages/${this.roomId}`)
+        .get(`/api/v1/room_messages/${this.roomId}`)
         .then((response) => {
           this.messages = response.data;
         });
@@ -190,7 +190,7 @@ export default {
     async sendMessage() {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       await axios
-        .post('/api/room_messages', {
+        .post('/api/v1/room_messages', {
           room_message: {
             content: this.message,
             room_id: this.room.id,
@@ -204,13 +204,13 @@ export default {
     async deleteRoom() {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
       if (confirm('削除しますか？')) {
-        await axios.delete(`/api/rooms/${this.roomId}`);
+        await axios.delete(`/api/v1/rooms/${this.roomId}`);
         this.$router.push('/rooms');
       }
     },
     fetchJoinRoom() {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
-      axios.get('/api/user_rooms').then((response) => {
+      axios.get('/api/v1/user_rooms').then((response) => {
         this.user_rooms = response.data;
       });
     },

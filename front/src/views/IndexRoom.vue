@@ -110,7 +110,7 @@ export default {
       const params = { ...searchParams, ...pagingParams };
       const paramsSerializer = (params) =>
         qs.stringify(params, { arrayFormat: 'brackets' });
-      const res = await axios.get(`/api/rooms`, {
+      const res = await axios.get(`/api/v1/rooms`, {
         params,
         paramsSerializer,
       });
@@ -120,7 +120,7 @@ export default {
     },
     async fetchTags() {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
-      const res = await axios.get(`/api/tags`);
+      const res = await axios.get(`/api/v1/tags`);
       this.tags = res.data.tags;
     },
     paging(page) {

@@ -151,6 +151,7 @@ export default {
   },
   methods: {
     async fetchRooms() {
+      axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
       const searchParams = {
         q: {
           title: this.query.roomTitle,
@@ -161,7 +162,7 @@ export default {
       const params = { ...searchParams, ...pagingParams };
       const paramsSerializer = (params) =>
         qs.stringify(params, { arrayFormat: 'brackets' });
-      const res = await axios.get(`http://localhost:3000/api/rooms`, {
+      const res = await axios.get(`/api/v1/rooms`, {
         params,
         paramsSerializer,
       });
@@ -169,7 +170,8 @@ export default {
       this.pagingMeta = res.data.meta;
     },
     async fetchTags() {
-      const res = await axios.get(`http://localhost:3000/api/tags`);
+      axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
+      const res = await axios.get(`/api/v1/tags`);
       this.tags = res.data.tags;
     },
     async guestLogin() {
