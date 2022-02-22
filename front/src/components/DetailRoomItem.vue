@@ -69,14 +69,14 @@ export default {
     },
     toRooms() {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
-      axios.get('/api/user_rooms', {
+      axios.get('/api/v1/user_rooms', {
         room_id: this.room.id,
       }).then;
       this.$router.push(`/rooms`);
     },
     async enterRoom() {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
-      await axios.post(`/api/user_rooms`, {
+      await axios.post(`/api/v1/user_rooms`, {
         user_room: {
           room_id: this.room.id,
         },

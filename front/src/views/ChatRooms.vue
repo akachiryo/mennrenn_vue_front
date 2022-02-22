@@ -23,13 +23,10 @@ export default {
   methods: {
     fetchJoinRoom() {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
-      axios.get('/api/user_rooms').then((response) => {
+      axios.get('/api/v1/user_rooms').then((response) => {
         this.user_rooms = response.data;
       });
     },
-    //  enterChatRoom(roomId) {
-    //    this.$router.push(`/chatroom/${roomId}`)
-    // }
   },
 };
 </script>

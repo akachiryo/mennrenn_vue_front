@@ -19,7 +19,7 @@ export default {
   methods: {
     async createRoom(roomTitle, roomContent, selectedTags) {
       axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
-      await axios.post('/api/rooms', {
+      await axios.post('/api/v1/rooms', {
         room: {
           title: roomTitle,
           content: roomContent,

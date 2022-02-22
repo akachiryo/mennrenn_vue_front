@@ -89,7 +89,7 @@ export default {
       if (this.$refs.form.validate()) {
         try {
           axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
-          await axios.post(`/api/users`, {
+          await axios.post(`/api/v1/users`, {
             user: {
               name: this.name,
               email: this.email,
