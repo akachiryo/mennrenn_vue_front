@@ -12,11 +12,11 @@
         >MennRenn</v-app-bar-title
       >
       <!-- 管理者 -->
-      <v-tabs v-if="isAdmin === true" right>
+      <v-tabs v-if="isAdmin" right>
         <v-tab @click="myProfile"> ユーザー一覧</v-tab>
-        <v-tab :to="'/rooms'">部屋一覧</v-tab>
-        <v-tab :to="'/room/new'"> 部屋作成</v-tab>
-        <v-tab :to="'/chatrooms'"> ルームチャット</v-tab>
+        <v-tab :to="'/rooms'">ルーム一覧</v-tab>
+        <v-tab :to="'/room/new'">タグ一覧</v-tab>
+        <v-tab :to="'/chatrooms'"> ルームチャット一覧</v-tab>
         <v-tab @click="logout"> ログアウト</v-tab>
       </v-tabs>
       <!-- ログイン中 -->
@@ -38,8 +38,25 @@
 
     <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
+        <v-list-item-group v-if="isAdmin">
+          <v-list-item @click="myProfile">
+            <v-list-item-title>ユーザー一覧</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/rooms`">
+            <v-list-item-title>部屋一覧</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/room/new`">
+            <v-list-item-title>部屋作成</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/chatrooms`">
+            <v-list-item-title>ルームチャット</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="logout">
+            <v-list-item-title>ログアウト</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
         <!-- ログイン中 -->
-        <v-list-item-group v-if="logging">
+        <v-list-item-group v-else-if="logging">
           <v-list-item @click="myProfile">
             <v-list-item-title>マイページ</v-list-item-title>
           </v-list-item>
@@ -81,24 +98,23 @@ export default {
   name: 'Header',
   data() {
     return {
-      drawer: false,
+      drawer: false
     };
   },
   computed: {
+    isAdmin() {
+      return this.$store.getters['auth/currentUser'].admin;
+    },
     logging() {
-      return this.$store.getters['auth/currentUser'];
+      return this.$store.getters['auth/currentUser'].id;
     },
   },
   methods: {
     logout() {
       if (confirm('ログアウトしますか？')) {
         this.$store.dispatch('auth/logout');
-        // location.reload();
         this.$router.push(`/`);
       }
-    },
-    isAdmin() {
-      this.$store.getters['auth/currentUser'].admin === true
     },
     myProfile() {
       const userId = this.$store.getters['auth/currentUser'].id;
@@ -106,7 +122,7 @@ export default {
     },
     toHome() {
       this.$router.push(`/`);
-    },
+    }
   },
 };
 </script>
