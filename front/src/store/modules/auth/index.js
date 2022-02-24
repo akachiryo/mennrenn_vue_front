@@ -1,14 +1,11 @@
 import axios from 'axios';
 
-// const getDefaultState = () => {
-//   return {
-//     currentUser: null,
-//   }
-// };
-
-// const state = getDefaultState()
 const state = {
-  currentUser: null,
+  // currentUser: null,
+  currentUser: {
+    id: null,
+    admin: null
+  },
 };
 
 const getters = {
@@ -29,10 +26,15 @@ const mutations = {
     console.log(data);
   },
   CLEAR_CURRENT_USER: () => {
-    state.currentUser = null;
-    // Object.assign(state, getDefaultState())
-    localStorage.removeItem('currentUser');
-    // location.reload();
+    state.currentUser = {
+      id: null,
+      admin: null
+    };
+    // localStorage.removeItem('currentUser');
+    localStorage.setItem('currentUser', {
+      id: null,
+      admin: null
+    });
   },
 };
 
