@@ -13,7 +13,7 @@
       >
       <!-- 管理者 -->
       <v-tabs v-if="isAdmin" right>
-        <v-tab @click="myProfile"> ユーザー一覧</v-tab>
+        <v-tab :to="'/admin/users'"> ユーザー一覧</v-tab>
         <v-tab :to="'/rooms'">ルーム一覧</v-tab>
         <v-tab :to="'/room/new'">タグ一覧</v-tab>
         <v-tab :to="'/chatrooms'"> ルームチャット一覧</v-tab>

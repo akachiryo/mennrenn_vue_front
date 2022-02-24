@@ -205,7 +205,6 @@ export default {
 }
 
 @media not all and (min-width: 521px) {
-  /* 1024pxを含まずそれより小さいという表現ができる */
   .registed-btn {
     margin-bottom: 20px;
   }

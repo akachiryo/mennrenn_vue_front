@@ -10,6 +10,7 @@ import DetailRoom from '../views/DetailRoom.vue';
 import Profile from '../views/Profile.vue';
 import ChatRoom from '../views/ChatRoom.vue';
 import ChatRooms from '../views/ChatRooms.vue';
+import IndexUsers from '../views/IndexUsers.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,7 @@ const router = new VueRouter({
     { path: '/users/:id', component: Profile, name: 'Profile' },
     { path: '/chatrooms', component: ChatRooms, name: 'ChatRooms' },
     { path: '/chatroom/:id', component: ChatRoom, name: 'ChatRoom' },
+    { path: '/admin/users', component: IndexUsers, name: 'IndexUsers' },
   ],
 });
 

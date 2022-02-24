@@ -12,9 +12,7 @@
       </v-list-item-avatar>
       <v-list-item-content>
         <v-list-item-title>{{ user_room.room.title }}</v-list-item-title>
-        <v-list-item-subtitle>{{
-          user_room.room.content
-        }}</v-list-item-subtitle>
+        <v-list-item-subtitle>{{ user_room.room.content }}</v-list-item-subtitle>
         <v-list-item-action
           v-text="
             $dayjs(user_room.room.created_at).format('YYYY-MM-DD HH:mm:ss')
