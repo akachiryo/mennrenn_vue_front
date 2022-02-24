@@ -15,6 +15,7 @@
               <ChatRoomLists
                 :user_rooms="user_rooms"
                 @fetchMessages="fetchMessages"
+                @fetchRoom="fetchRoom"
               />
             </v-container>
           </v-card-content>
@@ -22,7 +23,7 @@
       </v-col>
       <v-col cols="12" md="9">
         <v-card color="grey lighten-5">
-          <v-card-title class="v-card-title">
+          <v-card-title class="v-card-title text-truncate">
             <span class="text-h5">{{ room.title }}</span>
             <v-spacer></v-spacer>
             <v-menu offset-y>
@@ -31,7 +32,6 @@
                   <v-icon large>mdi-dots-vertical</v-icon>
                 </v-btn>
               </template>
-
               <v-list>
                 <v-list-item
                   v-for="(item, i) in items"

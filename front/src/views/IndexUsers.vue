@@ -4,16 +4,15 @@
           <v-list-item
            v-for="(user) in users"
            :key="user.id"
-           @click="$router.push(`/users/${user.id}`)"
           >
-            <v-list-item-avatar>
+            <v-list-item-avatar @click="$router.push(`/users/${user.id}`)">
               <v-img
                 :src="user.avatar_url"
                 aspect-ratio="1"
                 class="grey lighten-2"
               ></v-img>
             </v-list-item-avatar>
-            <v-list-item-content>
+            <v-list-item-content @click="$router.push(`/users/${user.id}`)">
               <v-list-item-title>{{ user.name }}</v-list-item-title>
               <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
             </v-list-item-content>
@@ -45,8 +44,6 @@ export default {
   },
   created() {
     this.fetchUsers()
-  },
-  computed() {
   },
   methods: {
     fetchUsers() {
