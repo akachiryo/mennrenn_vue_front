@@ -13,6 +13,26 @@
       >
         プライバシーポリシー
       </v-btn>
+       <v-btn
+          class="mx-4 mt-2"
+          dark
+          icon
+           @click="moveLink(`https://twitter.com/mennrenn`)"
+        >
+          <v-icon size="24px">
+            mdi-twitter
+          </v-icon>
+        </v-btn>
+       <v-btn
+          class="mx-4 mt-2"
+          dark
+          icon
+          @click="moveLink(`https://github.com/akachiryo`)"
+        >
+          <v-icon size="24px">
+            mdi-github
+          </v-icon>
+        </v-btn>
       <v-col
         class="py-4 text-center white--text"
         cols="12"
@@ -23,3 +43,12 @@
 
   </v-footer>
 </template>
+<script>
+  export default {
+    methods: {
+    moveLink(url) {
+      window.open(url, '_blank');
+    },
+  },
+  }
+</script>
