@@ -34,7 +34,7 @@
         <v-slide-item v-for="room in rooms" :key="room.id">
           <v-card class="ma-4" max-width="310">
             <v-card-title>
-              <span class="text-h5">{{ room.title }}</span>
+              <span class="text-h5 text-truncate">{{ room.title }}</span>
             </v-card-title>
             <v-card-text class="font-weight-bold text-truncate">
               {{ room.content }}
