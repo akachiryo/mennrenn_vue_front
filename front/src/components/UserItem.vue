@@ -1,5 +1,9 @@
 <template>
-  <v-card @click="$router.push(`/users/${user.id}`)">
+  <v-card
+   @click="$router.push(`/users/${user.id}`)"
+   min-height="400px"
+   class="pt-10"
+  >
     <v-card-title class="justify-center">
       <v-avatar size="120">
         <v-img

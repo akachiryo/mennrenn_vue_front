@@ -1,7 +1,9 @@
 <template>
-  <v-card>
-    <v-card-title class="text-h3">{{ room.title }}</v-card-title>
-    <v-card-subtitle class="text-h5">{{ room.content }}</v-card-subtitle>
+  <v-card min-height="400px">
+    <v-card-title class="text-h4 mb-5">{{ room.title }}</v-card-title>
+    <v-card-subtitle class="room-item-content text-h6">
+    {{ room.content }}
+    </v-card-subtitle>
     <v-card-text
       class="text-right"
       v-text="$dayjs(room.created_at).format('YYYY-MM-DD HH:mm:ss')"
@@ -15,7 +17,7 @@
       </div>
       <div v-else>
         <v-btn large dark color="error lighten-1" @click="toRooms">
-          <v-icon>mdi-door-closed-lock </v-icon>
+          <v-icon>mdi-door-closed-lock</v-icon>
           満室
         </v-btn>
       </div>
@@ -86,3 +88,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.room-item-content {
+  min-height: 200px;
+}
+</style>
