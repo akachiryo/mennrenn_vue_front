@@ -90,6 +90,7 @@ export default {
   created() {
     this.fetchRooms();
     this.fetchTags();
+    this.fetchAdmin()
   },
   computed: {
     isExistRooms() {

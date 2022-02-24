@@ -1,22 +1,33 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col cols="4">
-        <UserItem :user="room.user" />
-      </v-col>
-      <v-col cols="8">
+    <v-main class="my-7">
+      <div v-if="$vuetify.breakpoint.mdAndUp">
+        <v-row>
+          <v-col cols="4">
+            <UserItem :user="room.user" />
+          </v-col>
+          <v-col cols="8">
+            <DetailRoomItem
+              :room="room"
+              @openEditRoom="openEditRoom"
+              @deleteRoom="deleteRoom"
+            />
+          </v-col>
+        </v-row>
+      </div>
+      <div v-else>
         <DetailRoomItem
           :room="room"
           @openEditRoom="openEditRoom"
           @deleteRoom="deleteRoom"
         />
-      </v-col>
-    </v-row>
-    <room-edit-modal
-      ref="dialog"
-      :room="room"
-      @update="updateRoom"
-    ></room-edit-modal>
+      </div>
+      <room-edit-modal
+        ref="dialog"
+        :room="room"
+        @update="updateRoom"
+      ></room-edit-modal>
+    </v-main>
   </v-container>
 </template>
 
