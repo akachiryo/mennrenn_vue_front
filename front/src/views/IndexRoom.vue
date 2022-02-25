@@ -39,7 +39,14 @@
       </v-col>
       <v-col xs="12" sm="12" md="9">
         <v-row v-if="isExistRooms" align-content="center">
-          <v-col v-for="room in rooms" :key="room.id" xs="12" sm="6" md="4" class="pt-0">
+          <v-col
+            v-for="room in rooms"
+            :key="room.id"
+            xs="12"
+            sm="6"
+            md="4"
+            class="pt-0"
+          >
             <room-item :room="room"></room-item>
           </v-col>
         </v-row>
@@ -90,7 +97,7 @@ export default {
   created() {
     this.fetchRooms();
     this.fetchTags();
-    this.fetchAdmin()
+    this.fetchAdmin();
   },
   computed: {
     isExistRooms() {
@@ -100,7 +107,7 @@ export default {
   methods: {
     async fetchRooms() {
       //  this.$emit('loadingTrue');
-      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
       const searchParams = {
         q: {
           title: this.query.roomTitle,
@@ -120,7 +127,7 @@ export default {
       // this.$emit('loadingFalse');
     },
     async fetchTags() {
-      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
       const res = await axios.get(`/api/v1/tags`);
       this.tags = res.data.tags;
     },

@@ -2,11 +2,7 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-card
-          max-width="800"
-          class="mx-auto my-10"
-          v-if="user"
-        >
+        <v-card max-width="800" class="mx-auto my-10" v-if="user">
           <v-card-title>
             <v-avatar size="120">
               <v-img
@@ -108,13 +104,10 @@ export default {
     },
   },
   async created() {
-    axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
-    axios
-      .get(`/api/v1/users/${this.userId}`)
-      .then((response) => {
-        this.targetUser = response.data;
-      });
+    axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
+    axios.get(`/api/v1/users/${this.userId}`).then((response) => {
+      this.targetUser = response.data;
+    });
   },
 };
 </script>
-  

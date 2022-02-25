@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  front-push-and-build:
+  front1-push-and-build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -14,15 +14,14 @@ jobs:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         USER_NAME: ${{ secrets.USER_NAME }}
         HOST_NAME_ONE: ${{ secrets.HOST_NAME_ONE }}
-      run:
+      run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME_ONE} 'cd mennrenn_vue_front &&
         git pull origin main &&
         cd front &&
         yarn build'
 
-jobs:
-  front-push-and-build:
+  front2-push-and-build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +30,7 @@ jobs:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         USER_NAME: ${{ secrets.USER_NAME }}
         HOST_NAME_TWO: ${{ secrets.HOST_NAME_TWO }}
-      run:
+      run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME_TWO} 'cd mennrenn_vue_front &&
         git pull origin main &&
