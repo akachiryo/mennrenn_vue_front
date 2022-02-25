@@ -88,7 +88,7 @@ export default {
     async signup() {
       if (this.$refs.form.validate()) {
         try {
-          axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+          axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
           await axios.post(`/api/v1/users`, {
             user: {
               name: this.name,

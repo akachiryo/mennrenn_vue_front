@@ -2,7 +2,7 @@
   <v-card min-height="400px">
     <v-card-title class="text-h4 mb-5">{{ room.title }}</v-card-title>
     <v-card-subtitle class="room-item-content text-h6">
-    {{ room.content }}
+      {{ room.content }}
     </v-card-subtitle>
     <v-card-text
       class="text-right"
@@ -70,14 +70,14 @@ export default {
       this.$emit('deleteRoom');
     },
     toRooms() {
-      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
       axios.get('/api/v1/user_rooms', {
         room_id: this.room.id,
       }).then;
       this.$router.push(`/rooms`);
     },
     async enterRoom() {
-      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
       await axios.post(`/api/v1/user_rooms`, {
         user_room: {
           room_id: this.room.id,

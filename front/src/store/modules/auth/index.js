@@ -4,7 +4,7 @@ const state = {
   // currentUser: null,
   currentUser: {
     id: null,
-    admin: null
+    admin: null,
   },
 };
 
@@ -28,12 +28,12 @@ const mutations = {
   CLEAR_CURRENT_USER: () => {
     state.currentUser = {
       id: null,
-      admin: null
+      admin: null,
     };
     // localStorage.removeItem('currentUser');
     localStorage.setItem('currentUser', {
       id: null,
-      admin: null
+      admin: null,
     });
   },
 };
@@ -41,10 +41,7 @@ const mutations = {
 const actions = {
   async login({ commit }, sessionParams) {
     axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
-    const res = await axios.post(
-      `/api/v1/session`,
-      sessionParams
-    );
+    const res = await axios.post(`/api/v1/session`, sessionParams);
     commit('SET_CURRENT_USER', res.data);
   },
 
@@ -53,10 +50,7 @@ const actions = {
   },
   async updateProfile({ commit, state }, userParams) {
     axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
-    const res = await axios.patch(
-      `/api/v1/me/account`,
-      userParams
-    );
+    const res = await axios.patch(`/api/v1/me/account`, userParams);
     commit('SET_CURRENT_USER', {
       ...res.data,
       ...{ token: state.currentUser.token },
