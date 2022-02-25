@@ -39,17 +39,17 @@
     <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
         <v-list-item-group v-if="isAdmin">
-          <v-list-item @click="myProfile">
+          <v-list-item :to="`/admin/users`">
             <v-list-item-title>ユーザー一覧</v-list-item-title>
           </v-list-item>
           <v-list-item :to="`/rooms`">
-            <v-list-item-title>部屋一覧</v-list-item-title>
+            <v-list-item-title>ルーム一覧</v-list-item-title>
           </v-list-item>
-          <v-list-item :to="`/room/new`">
-            <v-list-item-title>部屋作成</v-list-item-title>
+          <v-list-item :to="`/admin/tags`">
+            <v-list-item-title>タグ一覧</v-list-item-title>
           </v-list-item>
           <v-list-item :to="`/chatrooms`">
-            <v-list-item-title>ルームチャット</v-list-item-title>
+            <v-list-item-title>ルームチャット一覧</v-list-item-title>
           </v-list-item>
           <v-list-item @click="logout">
             <v-list-item-title>ログアウト</v-list-item-title>
