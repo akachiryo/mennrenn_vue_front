@@ -104,7 +104,7 @@ export default {
       this.selectedTags = [];
     },
     async fetchTags() {
-      axios.defaults.baseURL =  process.env.VUE_APP_API_ENDPOINT
+      axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
       const res = await axios.get(`/api/v1/tags`);
       this.tags = res.data.tags.map((tag) => {
         return tag.name;
