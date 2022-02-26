@@ -9,26 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [latest]
-        node: [16.13.2]
+        node-version: [16.13.2]
     steps:
-    - uses: actions/setup-node@v2-beta
-      with:
-        node-version: ${{ matrix.node }}
-        
-    - name: Checkout
     - uses: actions/checkout@v2
-
-    - name: Cache node_modules
-      id: node_modules_cache_id
-      uses: actions/cache@v2　// 1
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
       with:
-        path: node_modules
-        key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-
-    - name: Install
-      if: steps.node_modules_cache_id.outputs.cache-hit != 'true'　// 2
-      run: yarn --check-files --frozen-lockfile --non-interactive
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
         
     - name: Deploy
       env:
