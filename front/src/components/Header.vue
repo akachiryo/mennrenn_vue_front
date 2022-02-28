@@ -98,7 +98,7 @@ export default {
   name: 'Header',
   data() {
     return {
-      drawer: false
+      drawer: false,
     };
   },
   computed: {
@@ -122,7 +122,7 @@ export default {
     },
     toHome() {
       this.$router.push(`/`);
-    }
+    },
   },
 };
 </script>
