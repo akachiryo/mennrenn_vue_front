@@ -33,12 +33,11 @@
                 </v-btn>
               </template>
               <v-list>
-                <v-list-item
-                  v-for="(item, i) in items"
-                  :key="i"
-                  @click="deleteRoom"
-                >
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <v-list-item @click="deleteRoom">
+                  <v-list-item-title><v-icon>mdi-delete</v-icon>部屋を削除</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="toVideoChat">
+                  <v-list-item-title><v-icon>mdi-video</v-icon>ビデオ通話を開始</v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-menu>
@@ -140,14 +139,13 @@
               <v-icon large>mdi-dots-vertical</v-icon>
             </v-btn>
           </template>
+           <v-list>
+            <v-list-item @click="deleteRoom">
+              <v-list-item-title><v-icon>mdi-delete</v-icon>部屋を削除</v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="toVideoChat">
+              <v-list-item-title><v-icon>mdi-video</v-icon>ビデオ通話を開始</v-list-item-title>
 
-          <v-list>
-            <v-list-item
-              v-for="(item, i) in items"
-              :key="i"
-              @click="deleteRoom"
-            >
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -250,7 +248,6 @@ export default {
     message: null,
     room: null,
     messages: [],
-    items: [{ title: 'Delete Room' }],
     user_rooms: null,
   }),
   created() {
@@ -319,7 +316,6 @@ export default {
         this.user_rooms = response.data;
       });
     },
-    // チャットログを一番下までスクロール
     scrollToEnd() {
       this.$nextTick(() => {
         const chatLog = this.$refs.scrollTarget;
@@ -327,6 +323,12 @@ export default {
         chatLog.scrollTop = chatLog.scrollHeight;
       });
     },
+    toVideoChat() {
+      let resolvedRoute = this.$router.resolve({
+        name: 'Videochat'
+      });
+      window.open(resolvedRoute.href, '_blank');
+    }
   },
 };
 </script>

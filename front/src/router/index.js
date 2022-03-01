@@ -13,6 +13,7 @@ import ChatRooms from '../views/ChatRooms.vue';
 import IndexUsers from '../views/IndexUsers.vue';
 import IndexTags from '../views/IndexTags.vue';
 import Privacy from '../views/Privacy.vue';
+import VideoChat from '../views/VideoChat.vue';
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,7 @@ const router = new VueRouter({
     { path: '/admin/users', component: IndexUsers, name: 'IndexUsers' },
     { path: '/admin/tags', component: IndexTags, name: 'IndexTags' },
     { path: '/privacy', component: Privacy, name: 'Privacy' },
+    { path: '/videochat', component: VideoChat, name: 'Videochat' },
   ],
 });
 
