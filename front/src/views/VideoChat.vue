@@ -31,7 +31,6 @@
                       label="Audio input"
                       single-line
                       prepend-icon="mdi-microphone"
-                      autofocus
                       dense
                       style="width: 350px"
                       @change="onChange"
