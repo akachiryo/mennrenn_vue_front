@@ -139,13 +139,13 @@
               <v-icon large>mdi-dots-vertical</v-icon>
             </v-btn>
           </template>
-
            <v-list>
             <v-list-item @click="deleteRoom">
               <v-list-item-title><v-icon>mdi-delete</v-icon>部屋を削除</v-list-item-title>
             </v-list-item>
             <v-list-item @click="toVideoChat">
               <v-list-item-title><v-icon>mdi-video</v-icon>ビデオ通話を開始</v-list-item-title>
+
             </v-list-item>
           </v-list>
         </v-menu>
