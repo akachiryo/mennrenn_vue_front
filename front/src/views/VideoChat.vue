@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <v-container>
     <v-row>
       <v-col xs="12" sm="12" md="4">
@@ -179,4 +179,4 @@ export default {
         }
   },
 };
-</script> -->
+</script>
