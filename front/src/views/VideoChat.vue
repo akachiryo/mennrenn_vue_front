@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <v-container>
     <v-row>
       <v-col xs="12" sm="12" md="4">
@@ -31,7 +31,6 @@
                       label="Audio input"
                       single-line
                       prepend-icon="mdi-microphone"
-                      autofocus
                       dense
                       style="width: 350px"
                       @change="onChange"
@@ -180,4 +179,4 @@ export default {
         }
   },
 };
-</script>
+</script> -->
