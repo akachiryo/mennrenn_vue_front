@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import About from '../views/About.vue';
+import AboutZoom from '../views/AboutZoom.vue';
+import AboutVideo from '../views/AboutVideo.vue';
 import Signup from '../views/Signup.vue';
 import Signin from '../views/Signin.vue';
 import CreateRoom from '../views/CreateRoom.vue';
@@ -22,7 +23,8 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes: [
     { path: '/', component: Home, name: 'Home' },
-    { path: '/about', component: About, name: 'About' },
+    { path: '/aboutzoom', component: AboutZoom, name: 'AboutZoom' },
+    { path: '/aboutvideo', component: AboutVideo, name: 'AboutVideo' },
     { path: '/signup', component: Signup, name: 'Signup' },
     { path: '/signin', component: Signin, name: 'Signin' },
     { path: '/room/new', component: CreateRoom, name: 'CreateRoom' },

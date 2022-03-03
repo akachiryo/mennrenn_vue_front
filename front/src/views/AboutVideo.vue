@@ -3,7 +3,7 @@
     <v-parallax dark src="../assets/about-top.png" class="home-img">
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
-          <p class="text-h4 mb-4">サイトの使い方</p>
+          <p class="text-h4 mb-4">サイトの使い方(サイト内ビデオ通話)</p>
         </v-col>
       </v-row>
     </v-parallax>
@@ -18,12 +18,8 @@
       </v-col>
       <v-col sm="6" xs="12">
         <p class="text-h6">
-          ①新規登録後、ログインしましょう。<br />
-          ZOOMの登録も済ませておきましょう。無料で使え、3分ほどで登録できます。
+          ①新規登録後、ログインしましょう。
         </p>
-        <v-btn @click="moveLink(`https://zoom.us/`)" color="primary">
-          <v-icon class="me-5">mdi-message-video</v-icon>ZOOMの会員登録を行う
-        </v-btn>
       </v-col>
     </v-row>
     <v-row>
@@ -64,12 +60,30 @@
       </v-col>
       <v-col sm="6" xs="12">
         <p class="text-h6">
-          ③「ルームチャット」タブからチャット画面に移動し、日時を決めたらZOOMで部屋を作成し、リンクURLをチャットで送り練習を始めましょう。<br />
-          <span class="text-h6"
-            >(スマートフォンの場合、ZOOMのアプリをダウンロードしましょう）。</span
-          ><br />
-          練習が終わったら、「Delete Room」を押し、部屋を閉じて終了です。
+          ③「ルームチャット」タブからチャット画面に移動し、日時を決めましょう。その後、右上の三点ドットのツールバーをクリックすると、「ビデオ通話を開始」というタブから通話画面用の新しいタブに移動しましょう。
         </p>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col sm="6" xs="12">
+        <template>
+          <v-carousel height="300" width="600">
+            <v-carousel-item
+              v-for="(about, i) in about4s"
+              :key="i"
+              :src="about.src"
+              reverse-transition="fade-transition"
+              transition="fade-transition"
+            ></v-carousel-item>
+          </v-carousel>
+        </template>
+      </v-col>
+      <v-col sm="6" xs="12">
+        <p class="text-h6">
+         ④通話画面には、電話番号代わりになるIDが表示されます。通話の時間になったらIDを相手に伝えましょう。IDが伝えられた側は、自分の通話画面から相手のIDを入れ「CALL」ボタンを押すと通話が開始されます。<br />
+         通話が終わったら、「CLOSE」ボタンを押して通話を終了し、通話画面のタブを閉じます。<br />
+         練習が終わったら、右上の三点ドットを開き、「部屋を削除」を押します。
+         </p>
       </v-col>
     </v-row>
   </v-container>
@@ -86,7 +100,14 @@ export default {
       about3s: [
         { src: require('../assets/about-3-1.png') },
         { src: require('../assets/about-3-2.png') },
-        { src: require('../assets/about-3-3.png') },
+        { src: require('../assets/about-4-1.png') },
+      ],
+      about4s: [
+        { src: require('../assets/about-4-1.png') },
+        { src: require('../assets/about-4-2.png') },
+        { src: require('../assets/about-4-3.png') },
+        { src: require('../assets/about-4-4.png') },
+        { src: require('../assets/about-4-1.png') },
       ],
     };
   },
