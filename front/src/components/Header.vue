@@ -87,8 +87,18 @@
           <v-list-item :to="`/`">
             <v-list-item-title>ホーム</v-list-item-title>
           </v-list-item>
-          <v-list-item :to="`/about`">
-            <v-list-item-title>コンテンツ</v-list-item-title>
+          <v-list-item>
+            <v-list-item-title>
+              <v-menu bottom open-on-hover offset-x>
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" text>コンテンツ</v-btn>
+              </template>
+              <v-list class="grey lighten-3">
+                <v-list-item :to="`/aboutzoom`">ZOOM</v-list-item>
+                <v-list-item :to="`/aboutvideo`">サイト内ビデオ通話</v-list-item>
+              </v-list>
+            </v-menu>
+            </v-list-item-title>
           </v-list-item>
           <v-list-item :to="`/signup`">
             <v-list-item-title>新規登録</v-list-item-title>
