@@ -111,7 +111,7 @@
             <v-img height="300" width="400" src="../assets/home-3.png"></v-img>
           </v-col>
           <v-col xs="12">
-            <p class="text-h6 font-weight-bold">ZOOMを使った練習ができる</p>
+            <p class="text-h6 font-weight-bold">オンラインで練習ができる</p>
             <p>
               リモートワークなど働き方が変化している昨今、面接にもその影響が表れています。面接本番と同じ環境で練習ができます。
             </p>
