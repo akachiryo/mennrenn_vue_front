@@ -19,7 +19,7 @@
           <v-list-item-title>{{ room.user.name }}</v-list-item-title>
         </v-list-item-content>
         <v-list-item-action
-          v-text="$dayjs(room.created_at).format('YYYY-MM-DD HH:mm:ss')"
+          v-text="$dayjs(room.created_at).format('YYYY-MM-DD HH:mm')"
         ></v-list-item-action>
       </v-list-item>
     </v-card-actions>
