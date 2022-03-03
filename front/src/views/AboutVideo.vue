@@ -9,21 +9,21 @@
     </v-parallax>
     <p class="text-h4 about-title mt-10" align="center">面接の手順</p>
     <v-row class="mt-10">
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <v-img
           height="300"
           width="600"
           src="../assets/registed-page.png"
         ></v-img>
       </v-col>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <p class="text-h6">
           ①新規登録後、ログインしましょう。
         </p>
       </v-col>
     </v-row>
     <v-row>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <template>
           <v-carousel height="300" width="600">
             <v-carousel-item
@@ -36,7 +36,7 @@
           </v-carousel>
         </template>
       </v-col>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <p class="text-h6">
           ②部屋一覧から、自分の条件と合う部屋に参加する。<br />
           部屋が見つからない場合、部屋を作成し、部屋に参加者が現れるまで待ちましょう。<br />
@@ -45,7 +45,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <template>
           <v-carousel height="300" width="600">
             <v-carousel-item
@@ -65,7 +65,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col sm="6" xs="12">
+      <v-col sxs="12" sm="12" md="6">
         <template>
           <v-carousel height="300" width="600">
             <v-carousel-item
@@ -78,7 +78,7 @@
           </v-carousel>
         </template>
       </v-col>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <p class="text-h6">
          ④通話画面には、電話番号代わりになるIDが表示されます。通話の時間になったらIDを相手に伝えましょう。IDが伝えられた側は、自分の通話画面から相手のIDを入れ「CALL」ボタンを押すと通話が開始されます。<br />
          通話が終わったら、「CLOSE」ボタンを押して通話を終了し、通話画面のタブを閉じます。<br />

@@ -9,14 +9,14 @@
     </v-parallax>
     <p class="text-h4 about-title mt-10" align="center">面接の手順</p>
     <v-row class="mt-10">
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <v-img
           height="300"
           width="600"
           src="../assets/registed-page.png"
         ></v-img>
       </v-col>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <p class="text-h6">
           ①新規登録後、ログインしましょう。<br />
           ZOOMの登録も済ませておきましょう。無料で使え、3分ほどで登録できます。
@@ -27,7 +27,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <template>
           <v-carousel height="300" width="600">
             <v-carousel-item
@@ -40,7 +40,7 @@
           </v-carousel>
         </template>
       </v-col>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <p class="text-h6">
           ②部屋一覧から、自分の条件と合う部屋に参加する。<br />
           部屋が見つからない場合、部屋を作成し、部屋に参加者が現れるまで待ちましょう。<br />
@@ -49,7 +49,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <template>
           <v-carousel height="300" width="600">
             <v-carousel-item
@@ -62,7 +62,7 @@
           </v-carousel>
         </template>
       </v-col>
-      <v-col sm="6" xs="12">
+      <v-col xs="12" sm="12" md="6">
         <p class="text-h6">
           ③「ルームチャット」タブからチャット画面に移動し、日時を決めたらZOOMで部屋を作成し、リンクURLをチャットで送り練習を始めましょう。<br />
           <span class="text-h6"
