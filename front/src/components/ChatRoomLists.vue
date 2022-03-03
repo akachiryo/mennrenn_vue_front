@@ -16,7 +16,7 @@
         }}</v-list-item-subtitle>
         <v-list-item-action
           v-text="
-            $dayjs(user_room.room.created_at).format('YYYY-MM-DD HH:mm:ss')
+            $dayjs(user_room.room.created_at).format('YYYY-MM-DD HH:mm')
           "
         >
         </v-list-item-action>

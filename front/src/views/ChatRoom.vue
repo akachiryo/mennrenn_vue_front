@@ -67,7 +67,7 @@
                         <p
                           class="message-date-right"
                           v-text="
-                            $dayjs(message.created_at).format('MM-DD HH:mm:ss')
+                            $dayjs(message.created_at).format('MM-DD HH:mm')
                           "
                         ></p>
                         <p class="says says-right">
@@ -93,7 +93,7 @@
                         <span
                           class="message-date-left"
                           v-text="
-                            $dayjs(message.created_at).format('MM-DD HH:mm:ss')
+                            $dayjs(message.created_at).format('MM-DD HH:mm')
                           "
                         ></span>
                       </div>
@@ -175,7 +175,7 @@
                     <p
                       class="message-date-right"
                       v-text="
-                        $dayjs(message.created_at).format('MM-DD HH:mm:ss')
+                        $dayjs(message.created_at).format('MM-DD HH:mm')
                       "
                     ></p>
                     <p class="says says-right">
@@ -201,7 +201,7 @@
                     <span
                       class="message-date-left"
                       v-text="
-                        $dayjs(message.created_at).format('MM-DD HH:mm:ss')
+                        $dayjs(message.created_at).format('MM-DD HH:mm')
                       "
                     ></span>
                   </div>
