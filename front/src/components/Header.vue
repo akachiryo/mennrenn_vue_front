@@ -30,7 +30,16 @@
       <!-- ログアウト中 -->
       <v-tabs v-else right>
         <v-tab :to="'/'"> ホーム</v-tab>
-        <v-tab :to="'/about'"> コンテンツ</v-tab>
+        <!-- <v-tab :to="'/about'"> コンテンツ</v-tab> -->
+          <v-menu bottom left open-on-hover offset-y>
+            <template v-slot:activator="{ on }">
+              <v-btn v-on="on" text  class="align-self-center mr-4">コンテンツ</v-btn>
+            </template>
+            <v-list class="grey lighten-3">
+              <v-list-item :to="`/aboutzoom`">ZOOM</v-list-item>
+              <v-list-item :to="`/aboutvideo`">サイト内ビデオ通話</v-list-item>
+            </v-list>
+          </v-menu>
         <v-tab :to="'/signup'"> 新規登録</v-tab>
         <v-tab :to="'/signin'"> ログイン</v-tab>
       </v-tabs>
