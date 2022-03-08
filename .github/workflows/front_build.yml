@@ -22,4 +22,4 @@ jobs:
         git pull origin main &&
         cd front &&
         export $PATH=/home/ec2-user/.yarn/bin:/home/ec2-user/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:~/.nvm/versions/node/v16.13.2/bin/node
-        yanr -v'
+        yarn -v'
