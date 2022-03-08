@@ -21,4 +21,5 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME_ONE} 'cd mennrenn_vue_front &&
         git pull origin main &&
         cd front &&
-        echo $PATH'
+        export $PATH=/home/ec2-user/.yarn/bin:/home/ec2-user/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:~/.nvm/versions/node/v16.13.2/bin/node
+        yanr -v'
