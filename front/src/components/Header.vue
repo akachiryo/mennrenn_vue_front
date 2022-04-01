@@ -15,6 +15,15 @@
       <v-tabs v-if="isAdmin" right>
         <v-tab :to="'/admin/users'"> ユーザー一覧</v-tab>
         <v-tab :to="'/rooms'">ルーム一覧</v-tab>
+        <v-menu bottom left open-on-hover offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" text  class="align-self-center mr-4">質問</v-btn>
+          </template>
+          <v-list class="grey lighten-3">
+            <v-list-item :to="`/admin/questiontype`">質問種類作成</v-list-item>
+            <v-list-item :to="`/admin/questions`">質問一覧</v-list-item>
+          </v-list>
+        </v-menu>
         <v-tab :to="'/admin/tags'">タグ一覧</v-tab>
         <v-tab :to="'/chatrooms'"> ルームチャット一覧</v-tab>
         <v-tab @click="logout"> ログアウト</v-tab>

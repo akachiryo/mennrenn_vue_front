@@ -15,6 +15,9 @@ import IndexUsers from '../views/IndexUsers.vue';
 import IndexTags from '../views/IndexTags.vue';
 import Privacy from '../views/Privacy.vue';
 import VideoChat from '../views/VideoChat.vue';
+import AlonePractice from '../views/AlonePractice.vue';
+import CreateQuestionType from '../views/CreateQuestionType.vue';
+import QuestionList from '../views/QuestionList.vue';
 
 Vue.use(VueRouter);
 
@@ -37,6 +40,9 @@ const router = new VueRouter({
     { path: '/admin/tags', component: IndexTags, name: 'IndexTags' },
     { path: '/privacy', component: Privacy, name: 'Privacy' },
     { path: '/videochat', component: VideoChat, name: 'Videochat' },
+    { path: '/alonepractice', component: AlonePractice, name: 'AlocePractice' },
+    { path: '/admin/questiontype', component: CreateQuestionType, name: 'CreateQuestiontype' },
+    { path: '/admin/questions', component: QuestionList, name: 'QuestionList' },
   ],
 });
 
