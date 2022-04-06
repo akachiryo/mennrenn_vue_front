@@ -33,6 +33,7 @@
         <v-tab @click="myProfile"> マイページ</v-tab>
         <v-tab :to="'/rooms'">部屋一覧</v-tab>
         <v-tab :to="'/room/new'"> 部屋作成</v-tab>
+        <v-tab :to="'/alonepractice'"> 個人練習</v-tab>
         <v-tab :to="'/chatrooms'"> ルームチャット</v-tab>
         <v-tab @click="logout"> ログアウト</v-tab>
       </v-tabs>
@@ -83,6 +84,9 @@
           </v-list-item>
           <v-list-item :to="`/room/new`">
             <v-list-item-title>部屋作成</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="`/alonepractice`">
+            <v-list-item-title>個人練習</v-list-item-title>
           </v-list-item>
           <v-list-item :to="`/chatrooms`">
             <v-list-item-title>ルームチャット</v-list-item-title>

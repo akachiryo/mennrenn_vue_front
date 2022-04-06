@@ -1,19 +1,30 @@
 <template>
   <div>
-    <p>{{ selected }}</p>
     <v-list>
       <v-list-item>
         <v-list-item-title>質問リスト</v-list-item-title>
         <v-list-item-action>
-          <v-list-item-action-text>
+          <v-list-item-action-text v-if="$vuetify.breakpoint.mdAndUp">
             <v-btn
               class="ma-2"
-              tile
-              outlined
               color="success"
               @click="$refs.dialog.open()"
             >
               <v-icon left>mdi-pencil</v-icon>質問作成
+            </v-btn>
+          </v-list-item-action-text>
+          <v-list-item-action-text v-else>
+            <v-btn
+              class="mx-2"
+              fab
+              dark
+              small
+              color="success"
+              @click="$refs.dialog.open()"
+            >
+              <v-icon dark>
+                mdi-pencil
+              </v-icon>
             </v-btn>
           </v-list-item-action-text>
         </v-list-item-action>
@@ -47,6 +58,7 @@
               v-model="selected"
               :label="child.content"
               :value="child.content"
+              @change="addSelected"
               >
               </v-checkbox>
             </v-list-subtitle>
@@ -67,7 +79,7 @@ export default {
   data() {
     return {
       questions: null,
-      selected: []
+      selected: [],
     }
   },
   components: {
@@ -96,6 +108,15 @@ export default {
       }
       this.fetchQuestions()
     },
-  }
+    addSelected() {
+    // this.question = this.selected[0];
+    this.$emit("addSelected", this.selected)
+    },
+    nextSelected() {
+      this.selected.shift();
+      this.$emit("nextTheme", this.selected[0])
+      this.question = this.selected[0];
+    }
+  },
 }
 </script>

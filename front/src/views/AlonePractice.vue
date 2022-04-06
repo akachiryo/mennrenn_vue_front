@@ -1,17 +1,42 @@
 <template>
   <div class="hello">
     <v-row justify="center">
-      <v-col cols="2">
-        <h1>面接質問：</h1>
-      </v-col>
-      <v-col cols="7">
-        <h1>経歴</h1>
-      </v-col>
+      <v-card
+      height="100px"
+      width="90%"
+      class="mt-10"
+      >
+        <v-card-title class="mt-5">面接質問： {{ question }}</v-card-title>
+      </v-card>
     </v-row>
-    <v-row  justify="center">
-      <p>自己紹介してください</p>
-    </v-row>
-    <v-row justify="center" class="mt-0 mb-2 mx-10">
+    <v-row>
+      <v-col cols="4" v-if="$vuetify.breakpoint.mdAndUp">
+        <v-card
+        width="73%"
+    class="mx-auto"
+
+  >
+    <v-toolbar
+      color="cyan"
+      dark
+    >
+      <v-toolbar-title>質問リスト</v-toolbar-title>
+    </v-toolbar>
+
+    <v-list>
+      <v-list-item
+      v-for="(selecte, i) in selected"
+      :key="i"
+      >
+        <v-list-item-content>
+          <v-list-item-title>{{ selecte }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-card>
+      </v-col>
+      <v-col md="8" xs="12" sm="12">
+         <v-row justify="center" class="mt-0 mb-2 mx-10">
       <v-btn
         :disabled="disabled"
         @click="startRec"
@@ -29,28 +54,48 @@
       録画終了
       </v-btn>
       <v-btn
-        @click="nextTheme"
+        @click="nextSelected"
         color="primary"
         class="py-7"
       >
       次のお題
       </v-btn> 
     </v-row>
-    <div class="vid_contents">
-      <video id="my-video" class="vid_main" controls autoplay playsinline ref="video"></video>
-    </div>
+        <div class="vid_contents">
+          <video id="my-video" class="vid_main" controls autoplay playsinline ref="video"></video>
+        </div>
+      </v-col>
+    </v-row>
+    <v-row
+    align="center"
+    justify="center"
+    class="my-10"
+    >
+
+    <v-card width="80%">
+
+    <question-lists @addSelected="addSelected"></question-lists>
+    </v-card>
+    </v-row>
   </div>
 </template>
 
 <script>
 import RecordRTC from "recordrtc";
+import QuestionLists from "../components/QuestionLists.vue"
+
 export default {
   name: "VideoRecord",
   data() {
     return {
       recorder: null,
-      disabled: false
+      disabled: false,
+      question: null,
+      selected: []
     };
+  },
+  components: {
+     QuestionLists
   },
   mounted() {
     navigator.mediaDevices
@@ -112,7 +157,16 @@ export default {
       this.recorder.camera.stop();
       this.recorder.destroy();
       this.recorder = null;
-    }
+    },
+    addSelected(addQuestion) {
+       this.selected = addQuestion
+       this.question = this.selected[0];
+    },
+    nextSelected() {
+      this.selected.shift();
+      this.question = this.selected[0];
+    },
+
   }
 };
 </script>
