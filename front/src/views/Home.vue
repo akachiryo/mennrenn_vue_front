@@ -1,6 +1,16 @@
 <template>
   <v-container mt-n2 pt-0>
-    <v-parallax dark src="../assets/home-top.png" class="home-img">
+    <v-row  class="home-top">
+      <v-col justify="center" align="center" cols="12" >
+        <p class="home-header-font text-h4 font-weight-bold">1人でできる面接練習</p>
+      </v-col>
+      <v-row>
+        <v-col cols="4"><v-img src="https://picsum.photos/id/11/500/300"></v-img></v-col>
+        <v-col cols="4"><v-img src="https://picsum.photos/id/11/500/300"></v-img></v-col>
+        <v-col cols="4"><v-img src="https://picsum.photos/id/11/500/300"></v-img></v-col>
+      </v-row>
+    </v-row>
+    <!-- <v-parallax dark src="../assets/home-top.png" class="home-img">
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
           <h1 class="text-h4 font-weight-thin mb-4">MennRenn</h1>
@@ -25,7 +35,7 @@
           </div>
         </v-col>
       </v-row>
-    </v-parallax>
+    </v-parallax> -->
     <div>
       <h1 class="home-room text-center" color="#99ffff">新着ルーム一覧</h1>
     </div>
@@ -193,6 +203,21 @@ export default {
 </script>
 
 <style>
+.home-top {
+  background-color: #0099CC;
+  width: 102vw;
+  position: relative;
+  left: 52%;
+  transform: translateX(-50%);
+  padding: 40px;
+}
+
+.home-header-font {
+  color: white;
+}
+
+
+
 .home-top,
 .home-room {
   color: #99ffff;
