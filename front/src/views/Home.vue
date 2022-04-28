@@ -1,87 +1,9 @@
 <template>
   <v-container mt-n2 pt-0>
-    <!-- <v-row  class="home-top">
-      <v-col cols="60">
-        <v-row>
-          <p class="text-h5 font-weight-bold home-header-font">1人でできる面接練習</p>
-          <p class="text-h6 home-header-font">
-            1人では難しい面接練習を、このサイトが完全サポートいたします。<br>
-            面接で成功しましょう。
-          </p>
-        </v-row>
-        <v-row>
-          <v-col cols="6">
-             <v-btn
-              color="primary"
-              to="/signup"
-              class="mx-10 px-12"
-              x-large
-            >
-              <v-icon class="me-3">mdi-account-plus</v-icon>
-              新規登録
-            </v-btn>
-          </v-col>
-          <v-col cols="6">
-            <v-btn
-          color="secondary"
-          @click="guestLogin" x-large
-          >
-              <v-icon class="me-3">mdi-account-box</v-icon>
-              ゲストログイン
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-col cols="6">
-
-      </v-col>
-
-
-
-      <v-col justify="center" align="center" cols="12" >
-        <p class="home-header-font text-h4 font-weight-bold">1人でできる面接練習</p>
-      </v-col>
-      <v-row>
-        <v-col cols="4">
-          <v-img src="../assets/home-header-1.png" max-width="100%" height="auto"></v-img>
-          <p class="home-header-img-font" align="center">録音・録画機能</p>
-        </v-col>
-        <v-col cols="4">
-          <v-img src="https://picsum.photos/id/11/500/300"></v-img>
-          <p class="home-header-img-font"  align="center">豊富な質問パターン、回答例</p>
-        </v-col>
-        <v-col cols="4">
-          <v-img src="https://picsum.photos/id/11/500/300"></v-img>
-          <p class="home-header-img-font"  align="center">困ったときに相談</p>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="6" class="d-flex align-end">
-           <v-btn
-              color="primary"
-              to="/signup"
-              class="ml-auto mx-10 px-12"
-              x-large
-            >
-              <v-icon class="me-3">mdi-account-plus</v-icon>
-              新規登録
-            </v-btn>
-        </v-col>
-        <v-col cols="6">
-          <v-btn
-          color="secondary"
-          @click="guestLogin" x-large
-          >
-              <v-icon class="me-3">mdi-account-box</v-icon>
-              ゲストログイン
-            </v-btn>
-        </v-col>
-      </v-row>
-    </v-row> -->
     <v-parallax dark src="../assets/home-top.png" class="home-img">
       <v-row align="center" justify="center">
         <v-col class="text-center" xs="12" sm="12" md="6">
-          <h1 class="text-h4 font-weight-thin mb-4">個人でできる面接練習</h1>
+          <h1 class="text-h4 font-weight-thin mb-4 mt-5">個人でできる面接練習</h1>
           <h4>
             １人では難しい面接練習を、このサイトが完全サポートいたします。<br>
             面接で成功しましょう。
@@ -96,14 +18,14 @@
               <v-icon class="me-3">mdi-account-plus</v-icon>
               新規登録
             </v-btn>
-            <v-btn color="secondary" @click="guestLogin" x-large>
+            <!-- <v-btn color="secondary" @click="guestLogin" x-large>
               <v-icon class="me-3">mdi-account-box</v-icon>
               ゲストログイン
-            </v-btn>
+            </v-btn> -->
           </div>
         </v-col>
-        <v-col cols="6" v-if="$vuetify.breakpoint.mdAndUp">
-          <div class="header-top-sliders">
+        <v-col xs="12" sm="12" md="6">
+          <div v-if="$vuetify.breakpoint.mdAndUp" class="header-top-sliders">
             <v-carousel height="400px" width="80%" cycle hide-delimiter-background>
               <v-carousel-item
                 v-for="(about, i) in about4s"
@@ -113,18 +35,28 @@
                 transition="fade-transition"
               ></v-carousel-item>
             </v-carousel>
-        
+          </div>
+          <div v-else class="header-top-sliders ms-10">
+            <v-carousel height="200px" width="80%" cycle hide-delimiter-background>
+              <v-carousel-item
+                v-for="(about, i) in about4s"
+                :key="i"
+                :src="about.src"
+                reverse-transition="fade-transition"
+                transition="fade-transition"
+              ></v-carousel-item>
+            </v-carousel>
           </div>
         </v-col>
       </v-row>
     </v-parallax>
     <div>
-      <h1 class="home-room text-center" color="#444444">新着ルーム一覧</h1>
+      <h1 class="home-room text-center">新着ルーム一覧</h1>
     </div>
     <v-sheet class="mx-auto" color="#EEFFFF">
-      <v-slide-group class="pa-4">
+      <v-slide-group show-arrows>
         <v-slide-item v-for="room in rooms" :key="room.id">
-          <v-card class="ma-4" max-width="310">
+          <v-card class="ma-5" width="300" height="225px">
             <v-card-title>
               <span class="text-h5 text-truncate">{{ room.title }}</span>
             </v-card-title>
@@ -143,7 +75,7 @@
                   <v-list-item-title>{{ room.user.name }}</v-list-item-title>
                 </v-list-item-content>
                 <v-list-item-action
-                  v-text="$dayjs(room.created_at).format('YYYY-MM-DD HH:mm:ss')"
+                  v-text="$dayjs(room.created_at).format('YYYY-MM-DD')"
                 ></v-list-item-action>
               </v-list-item>
             </v-card-actions>
