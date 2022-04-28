@@ -1,22 +1,90 @@
 <template>
   <v-container mt-n2 pt-0>
-    <v-row  class="home-top">
+    <!-- <v-row  class="home-top">
+      <v-col cols="60">
+        <v-row>
+          <p class="text-h5 font-weight-bold home-header-font">1人でできる面接練習</p>
+          <p class="text-h6 home-header-font">
+            1人では難しい面接練習を、このサイトが完全サポートいたします。<br>
+            面接で成功しましょう。
+          </p>
+        </v-row>
+        <v-row>
+          <v-col cols="6">
+             <v-btn
+              color="primary"
+              to="/signup"
+              class="mx-10 px-12"
+              x-large
+            >
+              <v-icon class="me-3">mdi-account-plus</v-icon>
+              新規登録
+            </v-btn>
+          </v-col>
+          <v-col cols="6">
+            <v-btn
+          color="secondary"
+          @click="guestLogin" x-large
+          >
+              <v-icon class="me-3">mdi-account-box</v-icon>
+              ゲストログイン
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col cols="6">
+
+      </v-col>
+
+
+
       <v-col justify="center" align="center" cols="12" >
         <p class="home-header-font text-h4 font-weight-bold">1人でできる面接練習</p>
       </v-col>
       <v-row>
-        <v-col cols="4"><v-img src="https://picsum.photos/id/11/500/300"></v-img></v-col>
-        <v-col cols="4"><v-img src="https://picsum.photos/id/11/500/300"></v-img></v-col>
-        <v-col cols="4"><v-img src="https://picsum.photos/id/11/500/300"></v-img></v-col>
+        <v-col cols="4">
+          <v-img src="../assets/home-header-1.png" max-width="100%" height="auto"></v-img>
+          <p class="home-header-img-font" align="center">録音・録画機能</p>
+        </v-col>
+        <v-col cols="4">
+          <v-img src="https://picsum.photos/id/11/500/300"></v-img>
+          <p class="home-header-img-font"  align="center">豊富な質問パターン、回答例</p>
+        </v-col>
+        <v-col cols="4">
+          <v-img src="https://picsum.photos/id/11/500/300"></v-img>
+          <p class="home-header-img-font"  align="center">困ったときに相談</p>
+        </v-col>
       </v-row>
-    </v-row>
-    <!-- <v-parallax dark src="../assets/home-top.png" class="home-img">
+      <v-row>
+        <v-col cols="6" class="d-flex align-end">
+           <v-btn
+              color="primary"
+              to="/signup"
+              class="ml-auto mx-10 px-12"
+              x-large
+            >
+              <v-icon class="me-3">mdi-account-plus</v-icon>
+              新規登録
+            </v-btn>
+        </v-col>
+        <v-col cols="6">
+          <v-btn
+          color="secondary"
+          @click="guestLogin" x-large
+          >
+              <v-icon class="me-3">mdi-account-box</v-icon>
+              ゲストログイン
+            </v-btn>
+        </v-col>
+      </v-row>
+    </v-row> -->
+    <v-parallax dark src="../assets/home-top.png" class="home-img">
       <v-row align="center" justify="center">
-        <v-col class="text-center" cols="12">
-          <h1 class="text-h4 font-weight-thin mb-4">MennRenn</h1>
+        <v-col class="text-center" xs="12" sm="12" md="6">
+          <h1 class="text-h4 font-weight-thin mb-4">個人でできる面接練習</h1>
           <h4>
-            このアプリを使えば、面接相手を簡単にマッチングできます。<br />
-            一緒に面接で成功しましょう。
+            １人では難しい面接練習を、このサイトが完全サポートいたします。<br>
+            面接で成功しましょう。
           </h4>
           <div class="mt-10">
             <v-btn
@@ -34,10 +102,24 @@
             </v-btn>
           </div>
         </v-col>
+        <v-col cols="6" v-if="$vuetify.breakpoint.mdAndUp">
+          <div class="header-top-sliders">
+            <v-carousel height="400px" width="80%" cycle hide-delimiter-background>
+              <v-carousel-item
+                v-for="(about, i) in about4s"
+                :key="i"
+                :src="about.src"
+                reverse-transition="fade-transition"
+                transition="fade-transition"
+              ></v-carousel-item>
+            </v-carousel>
+        
+          </div>
+        </v-col>
       </v-row>
-    </v-parallax> -->
+    </v-parallax>
     <div>
-      <h1 class="home-room text-center" color="#99ffff">新着ルーム一覧</h1>
+      <h1 class="home-room text-center" color="#444444">新着ルーム一覧</h1>
     </div>
     <v-sheet class="mx-auto" color="#EEFFFF">
       <v-slide-group class="pa-4">
@@ -86,7 +168,7 @@
       </v-slide-group>
     </v-sheet>
     <div>
-      <h1 class="home-room text-center mt-10 mb-10" color="#99ffff">
+      <h1 class="home-room text-center mt-10 mb-10" color="#444444">
         苦手を武器に。面接でライバルに差を付けよう！
       </h1>
       <fade-in-left>
@@ -95,9 +177,9 @@
             <v-img height="300" width="400" src="../assets/home-1.png"></v-img>
           </v-col>
           <v-col xs="12">
-            <p class="text-h6 font-weight-bold">気軽に面接練習ができる</p>
+            <p class="text-h6 font-weight-bold">1人で面接練習ができる</p>
             <p>
-              ユーザーログインから部屋を作成するまで、5分もかかりません。自分の条件に合う部屋があれば、より短い時間で練習を始めることができます。
+              ユーザー作成から練習まで１分もかかりません。想定される質問もこちらで用意してあるので、あなたはその質問に答えるだけです。
             </p>
           </v-col>
         </v-row>
@@ -108,9 +190,9 @@
             <v-img height="300" width="400" src="../assets/home-2.png"></v-img>
           </v-col>
           <v-col xs="12">
-            <p class="text-h6 font-weight-bold">条件に合う相手が見つかる</p>
+            <p class="text-h6 font-weight-bold">「就職、転職したいけど何からしたらいいのかわからない」</p>
             <p>
-              部屋にタグを付けることで、細かい条件を指定できます。「顔出し」「時間」「業界」様々な条件を付けることで、最適な練習相手を探すことができます。
+              業界理解、転職方法等不安が多く面接に踏み切れないことがあります。そんなんときは、このサイトで情報収集をしましょう。相談部屋を作成することができます。また、タグの検索機能もあるので、気になったら検索してみましょう！
             </p>
           </v-col>
         </v-row>
@@ -123,7 +205,7 @@
           <v-col xs="12">
             <p class="text-h6 font-weight-bold">オンラインで練習ができる</p>
             <p>
-              リモートワークなど働き方が変化している昨今、面接にもその影響が表れています。面接本番と同じ環境で練習ができます。
+              リモートワークなど働き方が変化している昨今、面接にもその影響が表れています。このサイトを使って練習相手を探し、当サイトもしくZOOMを使い面接本番と同じ環境で練習ができます。
             </p>
           </v-col>
         </v-row>
@@ -141,6 +223,11 @@ import FadeInRight from '../components/FadeInRight.vue';
 export default {
   data() {
     return {
+      about4s: [
+        { src: require('../assets/home-header1.png') },
+        { src: require('../assets/home-header2.png') },
+        { src: require('../assets/home-header3.png') },
+      ],
       model: null,
       rooms: null,
       tags: [],
@@ -204,7 +291,7 @@ export default {
 
 <style>
 .home-top {
-  background-color: #0099CC;
+  background-color: #6472c9;
   width: 102vw;
   position: relative;
   left: 52%;
@@ -216,11 +303,18 @@ export default {
   color: white;
 }
 
+.home-header-img-font {
+  color: white;
+}
 
+.header-top-sliders {
+  width: 80%;
+  height: 80%;
+}
 
 .home-top,
 .home-room {
-  color: #99ffff;
+  color: #444444;
   font-size: xx-large;
 }
 

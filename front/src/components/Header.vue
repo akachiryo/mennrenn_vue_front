@@ -8,7 +8,7 @@
         ></v-img>
       </template>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-app-bar-title @click="toHome" class="wrap-text"
+      <v-app-bar-title @click="toHome" class="wrap-text  font-weight-bold"
         >MennRenn</v-app-bar-title
       >
       <!-- 管理者 -->
@@ -201,6 +201,8 @@ export default {
 }
 
 .wrap-text {
+  // color: #6472c9;
+  color: white;
   overflow: visible !important;
   margin-right: 50px !important;
 }
